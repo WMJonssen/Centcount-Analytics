@@ -27,6 +27,13 @@ In past 3 years, I rewrote Centcount Analytics 3 times for high performance. Fin
 
 3rd Edition:  Request queue + full data cache, developed by PHP + MySQL + Redis, multi-process, Separation of computing and storage. high-concurrency & high performance.<br><br><br>
 
+<h2>Contact:</h2><br>
+Website: <a href="https://www.centcount.com">centcount.com</a><br>
+Demo: <a href="https://www.centcount.com/visitor.php?id=1801250000001&siteid=1801250000001001">See Demo</a><br>
+Email: <a href="mailto:wm.jonssen@gmail.com">wm.jonssen@gmail.com</a><br>
+Facebook: <a href="https://www.facebook.com/people/WenMing-Yang/100017971758654">Follow me on Facebook</a><br>
+Twitter: <a href="https://twitter.com/WM_Jonssen">@WM_Jonssen</a><br><br><br>
+
 <h2>License:</h2><br>
     Centcount Analytics is dual-licensed under the Free License and Commercial License.
 <br><br><br><br><br><br> 
