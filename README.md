@@ -8,12 +8,17 @@
 <h2>Features:</h2><br>
 
 1. Project: Open-source, self-deployment, 100% data ownership for data security & privacy.<br>
+
 2. Performance: Centcount Analytics is FAST! A lower-configured VPS can handle 1 million PV per day easily.<br>
+
 3. Rich Reports: Centcount Analytics offers 37 fixed reports.<br>
+
 4. Heatmap: A new & direct way to show the visitor's actions on your page!<br>
+
 5. Custom Report: Play data in any possible ways. Multi-Dimension, Multi-Condition, Multi-Metric. Return data by group and order. Get the data what you want without any limitation.<br><br><br>
 
 <h2>Development History:</h2><br>
+
 In past 3 years, I rewrote Centcount Analytics 3 times for high performance. Finally, Centcount Analytics 1.00 is coming now! Light, Stable, Powerful, High Performance... <br>
 
 1st Edition:  No queue, no cache, develped by PHP + MySQL, single-process, Computing was mixed with data storage.  Can not handle high-concurrence request.  Lower performance.<br>
