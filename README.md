@@ -2,7 +2,7 @@
 An open-source web analytics software
 
 END USER LICENSE AGREEMENT<br>
-Please read this agreement carefully before installing and using our software.
+<b>Please read this agreement carefully before installing and using our software.</b>
 
 Copyright © 2015-2018, WM Jonssen.
 All Rights Reserved.
@@ -15,7 +15,7 @@ This Agreement may be updated by Author at any time and without prior notice to 
 
 Except those explicitly stated in the Agreement, the Agreement does not stipulate the terms of service for other services offered by Author which the User visits when using the “Software”. Those services are usually regulated by other separate terms of service and the User should be familiar with and confirm his/her acceptance of those terms of service when using the relevant services. If there are conflicts between separate terms of service and this Agreement, the separate terms of service will govern. By using those services, the User shall be regarded as having accepted the relevant terms of service.
 
-1. Grant of License<br>
+<b>1. Grant of License</b><br>
 Subject to the terms and conditions of this Agreement, Author grants to you a limited, non-exclusive, worldwide license to install, download and use a single instance of the Software on a single website server through a single installation for non-commercial purposes for free.
 
 You can modify the source code (if being provided) or interface of the Software if your modification is strictly under the Agreement and to beautify your website.
@@ -28,7 +28,7 @@ You may use the Software for commercial means after purchase of the commercial l
 
 You can download application(s) for your website from Centcount Analytics official website after you have paid appropriate fee to the author/owner of the application(s).
 
-2. License Restrictions<br>
+<b>2. License Restrictions</b><br>
 You cannot use the Software for commercial or profit purposes (include but are not limited to company websites, operating websites or other for-profit websites) unless you have been licensed to. To purchase the license, please visit https://www.centcount.com/license_price.php or email to wm.jonssen@gmail.com for more information.
 
 You may not rent, sublicense, assign, lease, loan, resell, distribute, publish or network the Software or related materials or create derivative works based upon the Software or any part thereof.
@@ -39,7 +39,7 @@ You cannot remove or modify the copyright information and relevant links under a
 
 You cannot reverse engineer, decompile or disassemble, copy, modify, link, reproduce, publish or develop derivative products of the applications that you download from Centcount Analytics official website without the prior written permission from the application author/owner.
 
-3. Disclaimer of Warranties and Limitations of Liabilities<br>
+<b>3. Disclaimer of Warranties and Limitations of Liabilities</b><br>
 The software and the accompanying files are provided “as-is”, and to the maximum extent permitted by applicable law, Author disclaims all other warranties, express or implied, by statute or otherwise, regarding the software and any related materials, including their fitness for a particular purpose, their quality, their merchantability, or any related services or content is secure, or is free from bugs, viruses, errors, or other program limitations nor does it warrant access to the internet or to any other services through the software.
 
 To the maximum extent permitted by applicable law, Author will not be liable for any indirect, special, incidental, or consequential damages(including damages for loss of business, loss of profits, or the like), whatever based on breach of contract, tort(including negligence), product liability or otherwise, even Author has been advised of the possibility of such damages. Author’ total liability to you for actual damages for any cause whatsoever will be limited to the purchase price amount paid by you for the software.
@@ -48,12 +48,12 @@ Author is not liable for the content of any message in the websites powered by t
 
 Author does not guarantee the legality, safety, integrity, authenticity and quality of the applications which uploaded into Centcount Analytics official website by any third party. You agree to judge on yourself and take fully responsibilities to the action of download from Centcount Analytics official website. But in any case, Author may stop the Store’s service and take appropriate actions, including but not limited to uninstall the associated applications, suspend the Store’s service in whole or in part, keep the relevant records to the relevant authorities, and Author will not undertake any direct, indirect or consequential liability to the actions thereof.
 
-4. Termination<br>
+<b>4. Termination</b><br>
 The License is effective until terminated. You may terminate the License at any time by uninstalling the Software and destroying all copies of the Software in any media. This Agreement may be terminated by Author immediately and without notice if you fail to comply with any term or condition of the License or this Agreement. Upon such termination, you must immediately cease using the Software, and assume relevant liabilities.
 
 Author reserves the right to change or add to the terms of this Agreement at any time (including but are not limited to Internet-based Solutions, pricing, technical support options, and other product-related policies), and to change, discontinue or impose conditions on any feature or aspect of the Software, or any Internet-based Solutions provided to you or made available to you in the official websites. Such changes will be effective upon notification by any means reasonable to give you actual or constructive notice including by posting such terms on the discuz.net website, or another website designated by Author. Your continued use of the Software will indicate your agreement to any such change.
 
-5. Controlling Law<br>
+<b>5. Controlling Law</b><br>
 The Agreement is governed by and construed in accordance with the laws of P.R China. You hereby consent to the exclusive jurisdiction and venue in the HuiShan District court of the City of Wuxi.
 
 
