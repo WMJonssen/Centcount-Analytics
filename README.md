@@ -1,4 +1,4 @@
-# Centcount Analytics
+# Centcount Analytics (centcount.com)
 # An open-source web analytics software
 <br>
 <h2>What is Centcount Analytics:</h2><br>
@@ -21,11 +21,11 @@
 
 In past 3 years, I rewrote Centcount Analytics 3 times for high performance. Finally, Centcount Analytics 1.00 is coming now! Light, Stable, Powerful, High Performance... <br>
 
-1st Edition:  No queue, no cache, develped by PHP + MySQL, single-process, Computing was mixed with data storage.  Can not handle high-concurrence request.  Lower performance.<br>
+<b>1st Edition:</b>  No queue, no cache, develped by PHP + MySQL, single-process, Computing was mixed with data storage.  Can not handle high-concurrence request.  Lower performance.<br>
 
-2nd Edition:  Request queue + part of data cache, developed by PHP + MySQL + Redis, multi-process, Computing was mixed with data storage.  Can handle high-concurrence request but still low performance.<br>
+<b>2nd Edition:</b>  Request queue + part of data cache, developed by PHP + MySQL + Redis, multi-process, Computing was mixed with data storage.  Can handle high-concurrence request but still low performance.<br>
 
-3rd Edition:  Request queue + full data cache, developed by PHP + MySQL + Redis, multi-process, Separation of computing and storage. high-concurrency & high performance.<br><br><br>
+<b>3rd Edition:</b>  Request queue + full data cache, developed by PHP + MySQL + Redis, multi-process, Separation of computing and storage. high-concurrency & high performance.<br><br><br>
 
 <h2>Online Demo:</h2><br>
 
