@@ -33,7 +33,7 @@ In past 3 years, I rewrote Centcount Analytics 3 times for high performance. Fin
     
     
 
-<h2>END USER LICENSE AGREEMENT<h2><br>
+<h2>END USER LICENSE AGREEMENT</h2><br>
 <b>Please read this agreement carefully before installing and using our software.</b>
 
 Copyright © 2015-2018, WM Jonssen.
