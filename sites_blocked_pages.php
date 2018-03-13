@@ -176,7 +176,7 @@ function blocked_pages_table_html() {
 		<div class="framebox">
 			<div class="inputbox">
 				<div class="inputtitle">'. $GLOBALS['indicator']['Add Blocked Page'] .'</div>
-				<div class="closebtn"><a href="javascript:showInputBox(0)" style="height:24px; float:left;"><img src="images/inputclose.svg" style="width:24px; height:24px;" alt="close" title="close"/></a></div>
+				<div class="closebtn"><a href="javascript:showInputBox(0)" style="height:24px; float:left;"><img src="images/inputclose.png" style="width:24px; height:24px;" alt="close" title="close"/></a></div>
 				<form name="blockitemform" method="POST" action="" style="width:100%; height:100%; text-align:left; float:left;">
 					<div style="width:100%; height:auto; padding:15px; padding-top:0px; text-align:left; float:left;">
 						<p style="margin:0px; padding:0px; font-size:13px; height:30px; line-height:30px;">'. $GLOBALS['indicator']['Blocked Page'] .' :</p>
@@ -336,7 +336,7 @@ img.mid{vertical-align:middle;}
 			images[i].src = preload.arguments[i];
 		}
 	}
-	preload("images/loading.gif","images/inputclose.svg")
+	preload("images/loading.gif","images/inputclose.png")
  
 </script>';
 		
