@@ -1,5 +1,37 @@
-# Centcount-Analytics
-An open-source web analytics software
+# Centcount Analytics
+# An open-source web analytics software
+
+<b>What is Centcount Analytics</b><br>
+    Centcount Analytics is an open-source web analytics software. Developed by PHP + MySQL + Redis, Can be easily deployed on your own server, 100% data ownership. Data accuracy is the biggest feature of CA system. Centcount Analytics collects & analyzes visitor's data as many as possible, so as to provide a very accurate statistical data for the site administrator, and to dig potential value.
+
+
+<b>Features</b><br>
+Project: Open-source, self-deployment, 100% data ownership for data security & privacy.
+
+Performance: Centcount Analytics is FAST! A lower-configured VPS can handle 1 million PV per day easily.
+
+Rich Reports: Centcount Analytics offers 37 fixed reports.
+
+Heatmap: A new & direct way to show the visitor's actions on your page!
+
+Custom Report: Play data in any possible ways. Multi-Dimension, Multi-Condition, Multi-Metric. Return data by group and order. Get the data what you want without any limitation.
+
+
+<b>Development History</b><br>
+In past 3 years, I rewrote Centcount Analytics 3 times for high performance. Finally, Centcount Analytics 1.00 is coming now! Light, Stable, Powerful, High Performance... 
+
+1st Edition:  No queue, no cache, develped by PHP + MySQL, single-process, Computing was mixed with data storage.  Can not handle high-concurrence request.  Lower performance.
+
+2nd Edition:  Request queue + part of data cache, developed by PHP + MySQL + Redis, multi-process, Computing was mixed with data storage.  Can handle high-concurrence request but still low performance.
+
+3rd Edition:  Request queue + full data cache, developed by PHP + MySQL + Redis, multi-process, Separation of computing and storage. high-concurrency & high performance.
+
+
+<b>License</b><br>
+    Centcount Analytics is dual-licensed under the Free License and Commercial License.
+    
+    
+    
 
 END USER LICENSE AGREEMENT<br>
 <b>Please read this agreement carefully before installing and using our software.</b>
