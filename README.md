@@ -1,7 +1,7 @@
 # Centcount-Analytics
 An open-source web analytics software
 
-END USER LICENSE AGREEMENT
+END USER LICENSE AGREEMENT<br>
 Please read this agreement carefully before installing and using our software.
 
 Copyright © 2015-2018, WM Jonssen.
