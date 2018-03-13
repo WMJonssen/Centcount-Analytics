@@ -57,5 +57,5 @@ Author reserves the right to change or add to the terms of this Agreement at any
 The Agreement is governed by and construed in accordance with the laws of P.R China. You hereby consent to the exclusive jurisdiction and venue in the HuiShan District court of the City of Wuxi.
 
 
-Author/Owner: WM Jonssen
+Author/Owner: WM Jonssen<br>
 02-14-2018
