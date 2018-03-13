@@ -35,7 +35,7 @@ Check out the online demo for Centcount Analytics at <a href="https://www.centco
 
 Website: <a href="https://www.centcount.com">centcount.com</a><br>
 
-About us: <a href="https://www.centcount.com/about.php">www.centcount.com</a><br>
+About us: <a href="https://www.centcount.com/about.php">https://www.centcount.com/about.php</a><br>
 
 Email: <a href="mailto:wm.jonssen@gmail.com">wm.jonssen@gmail.com</a><br>
 
