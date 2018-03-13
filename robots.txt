@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /vendor/
+Disallow: /js/
+Disallow: /api/
+Disallow: /css/
+Disallow: /config/
+Disallow: /language/
+Disallow: /ipdb/
+Disallow: /maps/
