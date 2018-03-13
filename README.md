@@ -7,15 +7,15 @@
 
 <h2>Features:</h2><br>
 
-1. Project: Open-source, self-deployment, 100% data ownership for data security & privacy.<br>
+<b>1. Performance:</b> Centcount Analytics is FAST! A lower-configured VPS can handle 1 million PV per day easily.<br>
 
-2. Performance: Centcount Analytics is FAST! A lower-configured VPS can handle 1 million PV per day easily.<br>
+<b>2. Project:</b> Open-source, self-deployment, 100% data ownership for data security & privacy.<br>
 
-3. Rich Reports: Centcount Analytics offers 37 fixed reports.<br>
+<b>3. Rich Reports:</b> Centcount Analytics offers 37 fixed reports.<br>
 
-4. Heatmap: A new & direct way to show the visitor's actions on your page!<br>
+<b>4. Heatmap:</b> A new & direct way to show the visitor's actions on your page!<br>
 
-5. Custom Report: Play data in any possible ways. Multi-Dimension, Multi-Condition, Multi-Metric. Return data by group and order. Get the data what you want without any limitation.<br><br><br>
+<b>5. Custom Report:</b> Play data in any possible ways. Multi-Dimension, Multi-Condition, Multi-Metric. Return data by group and order. Get the data what you want without any limitation.<br><br><br>
 
 <h2>Development History:</h2><br>
 
