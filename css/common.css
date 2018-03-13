@@ -1,0 +1,169 @@
+/*!
+* ATTENTION: THIS FREE LICENSE IS ONLY FOR PERSONAL NON-COMMERCIAL USER. FOR COMMERCIAL PURPOSES, PLEASE PURCHASE A COMMERCIAL LICENSE! *
+* module: Centcount Analytics Free CA Common CSS Code *
+* version: 1.00 Free *
+* author: WM Jonssen *
+* date: 03/12/2018 *
+* copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
+* license: Dual licensed under the Free License and Commercial License. *
+* https://www.centcount.com *
+*/
+ 
+@charset "utf-8";
+
+*{color:#555; font-family:"Microsoft Yahei",Arial,Verdana; font-weight:300; padding:0px; margin:auto; border:0; border-radius:0;}
+h1{color:#333; letter-spacing:3px; margin-top:15px; margin-bottom:15px;}
+a{color:#39F; text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+
+.errmsg, .successmsg, .retmsg, .successbtn{width:calc(100% - 32px); height:auto; font-size:13px; line-height:18px; text-align:center; color:rgb(181,68,123); display:none; padding:15px; background-color:rgb(242,222,222); border-radius:4px; border:rgb(235,204,209) 1px solid; word-wrap:break-word; float:left;}
+.successmsg, .successbtn{width:calc(100% - 26px); display:block; padding:12px;}
+.successbtn{border-color:rgb(6,105,161); background-color:rgb(16,151,228); color:#fff; margin-top:15px;}
+.successbtn:hover{opacity:0.7; text-decoration:none;}
+.retmsg{display:block; text-align:left;}
+
+
+
+#header{width:100%; min-width:360px; height:auto; font-size:12px; text-align:left; color:#aaa; float:left; border-bottom:#ccc 1px solid;}
+
+#logo{width:auto; height:auto; line-height:16px; font-size:12px; text-align:left; color:#222; float:left; padding:10px;}
+img.mid{vertical-align:middle; float:left;}
+
+#guide{width:auto; height:auto; line-height:36px; font-size:12px; text-align:right; color:#aaa; float:right; padding:0; padding-left:10px; padding-right:10px;}
+.guidebtn,.guidespan,.langbtn,.lastbtn{width:auto; height:12px; line-height:12px; color:#4283C4; text-align:center; padding-left:10px; padding-right:11px; font-size:12px;}
+.langbtn{background:url(../images/menu.png) top right no-repeat; padding-right:21px;}
+.lastbtn{background:none; padding-right:10px;}
+.guidebtn:hover,.langbtn:hover,.lastbtn:hover{text-decoration:none;}
+.guidespan{background:none; padding-right:10px; color:#333;}
+
+#guide ul{background-color:#fff; list-style:none; width:auto; height:auto; float:right; margin:0; padding:0;}
+#guide li{background-color:#fff; width:auto; height:auto; font-size:12px; float:left;}
+#guide li:hover{background-color:#eee;}
+
+#guide li ul{display:none; width:auto; height:auto; border:#ddd 1px solid; position:absolute; z-index:999; background-color:#fff; overflow:hidden;}
+#guide li:hover ul{display:block;}
+#guide li li {display:block; width:auto; height:auto; float:none; text-align:left; overflow:hidden;}
+
+#guide li ul li a{display:block;height:30px; line-height:30px; font-size:12px;text-align:left;}
+#guide li ul li a:hover{text-decoration:none; background-color:#eee;}
+
+#title, .title{width:100%; min-width:360px; font-size:14px; text-align:center; padding-top:20px; padding-bottom:20px; float:left; border-bottom:#ccc 1px solid;}
+
+#bodyframe{border-bottom:#ccc 1px solid; text-align:center; padding-top:30px; padding-bottom:30px; width:100%; min-width:360px; float:left; font-size:14px;}
+
+.framebody{margin:auto; text-align:center; width:330px; min-width:330px; height:auto; font-size:12px;}
+p{font-size:14px; color:#555;}
+
+
+
+
+.section{width:100%; height:auto; font-size:14px; margin:auto; text-align:center; float:left;}
+.sImgL, .sImgR, .sTxtL, .sTxtR, .sBoxC, .sLogL, .sLogR{width:50%; height:450px; margin:auto; background-color:#f7f7f7; text-align:left; float:right; overflow:hidden;}
+.sImgL{background-position:top right; background-repeat:no-repeat; background-size:100% auto; float:left;}
+.sImgR{background-position:top left;  background-repeat:no-repeat; background-size:100% auto; float:right;}
+.sTxtL{text-align:right; float:left;}
+.sBoxC{height:auto; background-color:#fff; float:left; overflow:hidden;}
+.sLogL, .sLogR{height:auto; float:left;}
+.logoImg{width:550px; height:550px; margin:auto; margin-top:-50px;}
+
+.sText{width:auto; height:auto; padding:60px; padding-left:80px; padding-right:80px; text-align:left; float:none;}
+.pBoxL, .pBoxC{max-width:480px; line-height:24px; font-size:16px; font-family:Verdana,"Microsoft Yahei",Arial; float:none;}
+.pBoxL{float:left;}
+.sWord{max-width:960px; line-height:42px; margin:auto; color:#fff; font-family:Serif,Tahoma,"Microsoft Yahei",Arial; font-size:28px; font-weight:300; letter-spacing:1px;}
+
+.bBox{width:250px; text-align:center; margin:auto; padding:30px;}
+.word{font-size:15px; font-family:Tahoma,"Microsoft Yahei",Arial,Verdana; color:#555; letter-spacing:1px;}
+.btnB, .btnR{display:block; margin:auto; text-align:center; width:220px; height:auto; line-height:18px; margin-top:10px; margin-bottom:10px; padding:10px; background-color:rgb(16,151,228); color:#fff; font-size:14px; border-radius:4px; float:none;}
+.btnR{background-color:#e50e0e;}
+.btnB:hover, .btnR:hover{opacity:0.7; text-decoration:none;}
+.bImgC{width:auto; height:480px; margin:30px;}
+
+.sRed{background-color:#e50e0e;}
+.sBlue{background-color:#00b0ff;}
+.sGray{background-color:#f7f7f7;}
+.sWhite{background-color:#fff;}
+.sP30{padding:30px;}
+.sP15{padding:15px;}
+.bTop{border-top:#ddd 1px solid;}
+.bBot{border-bottom:#ddd 1px solid;}
+.fR, .tR{float:right;}
+.fL, .tL{float:left;}
+.tC{text-align:center;}
+.h545{height:545px;}
+.h480{height:480px;}
+.h475{height:475px;}
+.mh450{max-height:450px;}
+.h415{height:415px;}
+
+
+@media only screen and (max-width: 1920px) {
+.sImgL, .sImgR{background-size:100% 100%;}
+}
+
+
+@media only screen and (max-width: 1800px) {
+.sImgL, .sImgR{background-size:auto 100%;}
+}
+
+
+@media only screen and (max-width: 960px) {
+.sBoxC, .sImgL, .sLogL, .sImgR{width:100%; float:left;}
+.sBoxC{text-align:center;}
+.sTxtL, .sTxtR, .sLogR{width:100%; height:auto; float:left;}
+.sText{padding:45px; float:left;}
+.fR{max-width:640px; float:left; margin:auto;}
+.bBox{padding:30px;}
+.logoImg{width:450px; height:450px; margin-top:30px;}
+}
+
+
+@media only screen and (max-width: 768px) {
+.guidespan{display:none;}
+}
+
+
+@media only screen and (max-width: 640px) {
+#logo, .title{display:none;}
+.sWord{font-size:20px; line-height:32px;}
+.sImgL, .sImgR{width:100%; height:360px; float:left; background-size:auto 100%;}
+.sLogL{width:100%; float:left;}
+.bBox{padding-left:15px; padding-right:15px;}
+.sText, .sP30{padding:15px;}
+.logoImg{width:300px; height:300px;}
+}
+
+
+#footer{font-size:12px; line-height:18px; font-family:Arial,"Microsoft Yahei",Verdana; color:#777; text-align:center; float:left; width:100%; min-width:360px; padding-top:30px; padding-bottom:30px;}
+
+
+
+td{width:100%; height:auto; min-height:20px; line-height:16px; text-align:left; margin-top:15px; float:left;}
+tr, tbody, table, form{width:100%; border:0px; margin:0px; padding:0px; outline-style:none; outline-width:0px; border-spacing:0px; float:left;}
+.email{width:calc(100% - 37px); padding-left:30px; background:url(../images/login.png) top left no-repeat;}
+.pwd{width:calc(100% - 37px); padding-left:30px; background:url(../images/login.png) no-repeat; background-position:0px -30px;}
+.fresh{width:30px; height:34px; float:right; background:url(../images/login.png) no-repeat; background-position:0px -88px; background-size:30px;}
+.name{width:65px; font-size:12px; text-align:right; float:none;}
+.sug{width:100%; height:20px; line-height:20px; font-size:12px; text-align:center; margin-top:5px; float:left;}
+
+input{width:calc(100% - 12px); height:32px; line-height:32px; font-size:13px; border:#ccc 1px solid; ime-mode:disabled; outline-style:none; outline-width:0px; background-size:30px; float:left; padding-left:5px; padding-right:5px;} 
+button, select{width:100%; height:34px; line-height:33px; color:#333; border:#ccc 1px solid; float:left; padding-left:5px; padding-right:5px;}
+button{background:url(../images/login.png) bottom left repeat-x;}
+button:hover{border:#777 1px solid;}
+textarea{width:100%; font-size:13px; color:#333; border:#ccc 1px solid; resize:none; float:left; padding-left:5px; padding-right:5px;}
+.short{width:98px; margin-right:15px; padding-left:30px; background:url(../images/login.png) no-repeat; background-position:0px -60px;}
+.vcode{width:135px; height:34px; float:left; margin-right:10px;}
+.suggestion{text-align:left; width:auto; float:left;}
+.strength{width:255px; height:16px; background-image:url(../images/cc_images.png); background-position:5px -39px; background-repeat: no-repeat; float:right;}
+
+
+
+.frameform{width:100%; margin:auto; text-align:center; float:left;}
+
+.frameagree{width:100%; height:100%; display:none; position:fixed; top:0; left:0; text-align:center; margin:auto; background:rgba(0,0,0,1); float:left;}
+.agreebox{width:auto; max-width:600px; min-width:330px; height:-moz-calc(100% - 120px); height:-webkit-calc(100% - 120px); height:calc(100% - 120px); line-height:20px; text-align:justify; font-size:14px; margin:auto; background:#eee; color:#555; float:none; overflow-y:auto; border-radius:5px;}
+.agreebtn{width:100%; height:60px; line-height:60px; font-size:16px; font-weight:700; color:#fff; text-align:center; margin:auto; background-color:transparent; float:left;}
+
+.mTop{margin-top:0px;}
+.mTop15{margin-top:15px;}
+.dShow{display:block;}

@@ -1,0 +1,68 @@
+/*!
+* ATTENTION: THIS FREE LICENSE IS ONLY FOR PERSONAL NON-COMMERCIAL USER. FOR COMMERCIAL PURPOSES, PLEASE PURCHASE A COMMERCIAL LICENSE! *
+* module: Centcount Analytics Free CA Manager CSS Code *
+* version: 1.00 Free *
+* author: WM Jonssen *
+* date: 03/12/2018 *
+* copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
+* license: Dual licensed under the Free License and Commercial License. *
+* https://www.centcount.com *
+*/
+ 
+@charset "utf-8";
+
+body,html{font-size:12px; font-family:'Microsoft Yahei',Arial,Verdana; color:#555; padding:0px; margin:auto; border:0px;}
+img{border:0px;}
+a{color:#39F; text-decoration:none;}
+a:hover{text-decoration:underline;}
+.taba:hover{color:#000;}
+
+.errmsg{display:none; margin:auto;text-align:center; width:auto; height:auto; line-height:18px; margin:0px; margin-bottom:0px; padding:15px; background-color:rgb(242,222,222); color:rgb(181,68,123); font-size:13px; border-radius:5px; border:rgb(235,204,209) 1px solid;}
+
+#header{font-size:14px; font-family:'Microsoft Yahei',Arial,Verdana; width:100%; height:auto; min-width:360px; float:left;}
+
+.body_left_side{width:100%; max-width:210px; height:100%; min-height:100%; line-height:22px; background-color:#fff; border-right:#ccc 1px solid; transition:all 0.2s ease-in; position:fixed; top:0px; left:0px; margin:auto; text-align:left; overflow:visible; float:left; z-index:99999999;}
+.body_right_side{width:calc(100% - 211px); height:auto; line-height:22px; text-align:left; transition:all 0.2s ease-in; float:right;}
+
+.div_guide_frame{width:100%; height:60px; min-width:300px; float:none; padding:0px; background-color:#fff; border-bottom:#ccc 1px solid; font-size:14px; text-align:center; position:fixed; top:0; left:0; z-index:99999990;}
+.div_side_menu_bar{width:100%; height:100%; line-height:22px; background-color:#fff; overflow:hidden;}
+.div_side_menu{width:100%; max-width:195px; height:100%; float:left; padding:15px; padding-left:0px; overflow-y:auto; overflow-x:hidden;}
+.div_side_menu_hide_btn, .div_side_menu_show_btn{width:15px; height:60px; margin-top:0px; float:right; background:url(../images/switch_btn.png) 0px 0px no-repeat; border:#111 1px solid; border-top:0px; position:absolute; left:210px; top:0; cursor:pointer;}
+.div_side_menu_show_btn{background:url(../images/switch_btn.png) -15px 0px no-repeat;}
+.div_logo{width:100%; height:60px; float:left; overflow:hidden; border-bottom:#ccc 1px solid; padding:0px;}
+.img_logo{width:auto; height:40px; margin-top:10px; margin-left:10px; float:left;}
+.div_copyright{width:100%; height:40px; font-size:12px; line-height:20px; font-family:Arial,'Microsoft Yahei',Verdana; color:#777; text-align:center; float:left; padding-top:15px; border-top:#ccc 1px solid;}
+
+#side_menu ul{width:auto; height:auto; float:none; list-style:none; margin:0px; margin-left:15px; padding:0; display:none; overflow:hidden;}
+#side_menu li{width:auto; height:auto; line-height:30px; font-size:14px; color:#555; float:none; text-overflow:ellipsis; white-space:nowrap; position:relative; overflow:hidden; cursor:pointer;}
+#side_menu li:hover{text-decoration:none; color:#000;}
+#side_menu li a{width:auto; height:30px; line-height:30px; font-size:13px; color:#555; float:none; text-overflow:ellipsis; white-space:nowrap; position:relative; overflow:hidden; display:block;}
+#side_menu li a:hover{text-decoration:none; color:rgb(16,151,228);}
+#side_menu .main_menu{font-size:14px; color:#555; background:url(../images/menu1.png) right top no-repeat; padding-right:10px;}
+
+#side_menu .menu_hidden{background:url(../images/menu1.png) right top no-repeat; padding-right:10px; cursor:pointer;}
+#side_menu .menu_shown{background:url(../images/menu1.png) right bottom no-repeat; padding-right:10px; cursor:pointer;}
+
+
+.title{width:auto; height:60px; line-height:60px; font-size:22px; text-align:left; color:#000; float:left; padding-left:30px; font-family:Verdana,Arial,'Microsoft Yahei'; white-space:nowrap;}
+.guide{width:auto; height:46px; line-height:24px; font-size:12px; text-align:right; color:#aaa; float:right; margin:0px; margin-top:14px; margin-right:10px; overflow:hidden;}
+.btn_msg, .btn_help, .btn_language, .btn_account{width:32px; height:32px; float:left; margin-left:5px; margin-right:5px; text-align:center; font-size:10px; line-height:30px; color:#F00; background:url(../images/account.png) no-repeat; font-weight:bold; cursor:pointer;}
+.btn_msg{background-position:0px 0px;}
+.btn_help{background-position:-32px 0px;}
+.btn_language{background-position:-64px 0px;}
+.btn_account{background-position:-96px 0px;}
+.btn_msg:hover, .btn_help:hover, .btn_language:hover, .btn_account:hover{text-decoration:none;}
+
+
+.sitebar{width:auto; height:50px; line-height:47px; font-size:12px; font-family:Verdana,'Microsoft Yahei',Arial; color:#555; text-align:center; float:right; margin-right:5px;}
+.menuselect{width:180px; margin-left:10px; margin-right:10px; margin-top:12px; height:26px; vertical-align:middle; color:#777; display:block; float:right; text-align:left; font-size:10px; font-family:Verdana,'Microsoft Yahei',Arial;}
+.menuoption{height:20px; padding-top:3px; padding-left:5px; vertical-align:middle; color:#333; font-size:12px; font-family:Verdana,'Microsoft Yahei',Arial;}
+
+#bodyframe{font-size:14px; font-family:'Microsoft Yahei',Arial,Verdana; width:100%; min-width:360px; height:auto; float:left; border-bottom:#ccc 1px solid; overflow:hidden; margin:auto; text-align:center;}
+#footer{width:100%; min-width:360px; min-height:35px; font-size:12px; line-height:20px; font-family:Arial,'Microsoft Yahei',Verdana; color:#777; text-align:center; float:left; padding-top:15px;}
+
+
+
+@media only screen and (max-width: 720px) {
+.guide{display:none;}
+}
