@@ -7,3 +7,7 @@ Disallow: /config/
 Disallow: /language/
 Disallow: /ipdb/
 Disallow: /maps/
+Disallow: /report/
+Disallow: /setting/
+Disallow: /host/
+Disallow: /site/
