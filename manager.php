@@ -4,7 +4,7 @@
 * module: Centcount Analytics Free Manager PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/12/2018 *
+* date: 03/14/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -16,9 +16,9 @@ header('Content-type: text/html; charset=utf-8');
 
 @require './config/config_security.php';
 @require './config/config_common.php';
-require 'language.php';
-@require 'common.php';
-require 'html.php';
+require './language.php';
+@require './common.php';
+require './html.php';
 
 	$GLOBALS['ERROR'] = '';
 
@@ -69,7 +69,7 @@ require 'html.php';
 		default:
 			$GLOBALS['ACTION'] = 'Dashboard';
 		case 'Dashboard':
-			include 'dashboard.php';
+			include './report/dashboard.php';
 			$GLOBALS['ERROR'] .= dashboard_html();
 			break;
 			
@@ -81,62 +81,62 @@ require 'html.php';
 		default:
 			$GLOBALS['ACTION'] = 'Visits Overview';
 		case 'Visits Overview':
-			include 'visitors_overview.php';
+			include './report/visitors_overview.php';
 			$GLOBALS['ERROR'] .= visitors_overview_html();
 			break;
 
 		case 'Day Trend':
-			include 'visitors_day_trend.php';
+			include './report/visitors_day_trend.php';
 			$GLOBALS['ERROR'] .= visitors_day_trend_html();
 			break;
 			
 		case 'Realtime Visitor':
-			include 'visitors_realtime.php';
+			include './report/visitors_realtime.php';
 			$GLOBALS['ERROR'] .= visitors_realtime_html();
 			break;
 			
 		case 'Visitor Log':
-			include 'visitors_log.php';
+			include './report/visitors_log.php';
 			$GLOBALS['ERROR'] .= visitors_log_html();
 			break;
 			
 		case 'Returning Visitor Log':
-			include 'visitors_rv_log.php';
+			include './report/visitors_rv_log.php';
 			$GLOBALS['ERROR'] .= visitors_rv_log_html();
 			break;
 			
 		case 'Robot Log':
-			include 'visitors_robot_log.php';
+			include './report/visitors_robot_log.php';
 			$GLOBALS['ERROR'] .= visitors_robot_log_html();
 			break;
 			
 		case 'Devices':
-			include 'visitors_device.php';
+			include './report/visitors_device.php';
 			$GLOBALS['ERROR'] .= visitors_device_html();
 			break;
 			
 		case 'Software':
-			include 'visitors_software.php';
+			include './report/visitors_software.php';
 			$GLOBALS['ERROR'] .= visitors_software_html();
 			break;
 			
 		case 'Locations':
-			include 'visitors_location.php';
+			include './report/visitors_location.php';
 			$GLOBALS['ERROR'] .= visitors_location_html();
 			break;
 			
 		case 'Times':
-			include 'visitors_times.php';
+			include './report/visitors_times.php';
 			$GLOBALS['ERROR'] .= visitors_times_html();
 			break;
 
 		case 'Visitor Map':
-			include 'visitors_map.php';
+			include './report/visitors_map.php';
 			$GLOBALS['ERROR'] .= visitors_map_html();
 			break;
 
 		case 'Active Visitor':
-			include 'visitors_active_visitor.php';
+			include './report/visitors_active_visitor.php';
 			$GLOBALS['ERROR'] .= visitors_active_visitor_html();
 			break;
 
@@ -148,27 +148,27 @@ require 'html.php';
 		default:
 			$GLOBALS['ACTION'] = 'All Pages';
 		case 'All Pages':
-			include 'actions_all_page.php';
+			include './report/actions_all_page.php';
 			$GLOBALS['ERROR'] .= actions_all_page_html();
 			break;
 			
 		case 'Entry Pages':
-			include 'actions_entry_page.php';
+			include './report/actions_entry_page.php';
 			$GLOBALS['ERROR'] .= actions_entry_page_html();
 			break;
 			
 		case 'Bounce Pages':
-			include 'actions_bounce_page.php';
+			include './report/actions_bounce_page.php';
 			$GLOBALS['ERROR'] .= actions_bounce_page_html();
 			break;
 		
 		case 'Exit Pages':
-			include 'actions_exit_page.php';
+			include './report/actions_exit_page.php';
 			$GLOBALS['ERROR'] .= actions_exit_page_html();
 			break;
 			
 		case 'Robot Crawled Pages':
-			include 'actions_robot_crawled_page.php';
+			include './report/actions_robot_crawled_page.php';
 			$GLOBALS['ERROR'] .= actions_robot_crawled_page_html();
 			break;
 			
@@ -180,22 +180,22 @@ require 'html.php';
 		default:
 			$GLOBALS['ACTION'] = 'All Referrers';
 		case 'All Referrers':
-			include 'referrers_all_referrer.php';
+			include './report/referrers_all_referrer.php';
 			$GLOBALS['ERROR'] .= referrers_all_referrer_html();
 			break;
 			
 		case 'Search Engines':
-			include 'referrers_se_keyword.php';
+			include './report/referrers_se_keyword.php';
 			$GLOBALS['ERROR'] .= referrers_se_keyword_html();
 			break;
 			
 		case 'Websites':
-			include 'referrers_website.php';
+			include './report/referrers_website.php';
 			$GLOBALS['ERROR'] .= referrers_website_html();
 			break;
 		
 		case 'Channels':
-			include 'referrers_channel.php';
+			include './report/referrers_channel.php';
 			$GLOBALS['ERROR'] .= referrers_channel_html();
 			break;
 		}
@@ -211,14 +211,14 @@ require 'html.php';
 			$GLOBALS['ACTION'] = 'All Sites';
 		case 'All Sites':
 			get_hosts();
-			include 'sites_all_sites.php';
+			include './site/sites_all_sites.php';
 			$GLOBALS['ERROR'] .= all_sites_html();		
 			break;
 
 		case 'Add Site':
 			if (empty($GLOBALS['SITES']) === false) die(header("Location: manager.php?id={$GLOBALS['USERID']}&siteid={$GLOBALS['SITES'][0]['SiteID']}&menu=Sites&action=Site Configuration"));
 			get_hosts();
-			include 'sites_add_site.php';
+			include './site/sites_add_site.php';
 			if ($_POST) {
 				$GLOBALS['ERROR'] .= add_site($success);
 				if ($success) {
@@ -229,7 +229,7 @@ require 'html.php';
 			break;
 			
 		case 'Site Configuration':
-			include 'sites_modify_site_config.php';
+			include './site/sites_modify_site_config.php';
 			if ($_POST) {
 				$GLOBALS['ERROR'] .= modify_site_config();
 				check_sites();
@@ -238,12 +238,12 @@ require 'html.php';
 			break;
 		
 		case 'Get JS Code':
-			include 'sites_get_js_code.php';
+			include './site/sites_get_js_code.php';
 			get_js_code_html();
 			break;
 		
 		case 'Domains':
-			include 'sites_domains.php';
+			include './site/sites_domains.php';
 			if ($_POST) {
 				$GLOBALS['ERROR'] .= domains_operation();
 				$GLOBALS['ERROR'] .= get_domains();
@@ -260,7 +260,7 @@ require 'html.php';
 			break;	
 			
 		case 'Blocked Sites':
-			include 'sites_blocked_sites.php';
+			include './site/sites_blocked_sites.php';
 			if ($_POST) {
 				$GLOBALS['ERROR'] .= blocked_sites_operation();
 				$GLOBALS['ERROR'] .= get_domains();
@@ -277,7 +277,7 @@ require 'html.php';
 			break;
 				
 		case 'Blocked Pages':
-			include 'sites_blocked_pages.php';
+			include './site/sites_blocked_pages.php';
 			if ($_POST) {
 				$GLOBALS['ERROR'] .= blocked_pages_operation();
 				$GLOBALS['ERROR'] .= get_domains();
@@ -294,7 +294,7 @@ require 'html.php';
 			break;	
 			
 		case 'Blocked IPs':
-			include 'sites_blocked_ips.php';
+			include './site/sites_blocked_ips.php';
 			if ($_POST) {
 				$GLOBALS['ERROR'] .= blocked_ips_operation();
 				$GLOBALS['ERROR'] .= get_domains();
@@ -311,7 +311,7 @@ require 'html.php';
 			break;	
 			
 		case 'Blocked IDs':
-			include 'sites_blocked_ids.php';
+			include './site/sites_blocked_ids.php';
 			if ($_POST) {
 				$GLOBALS['ERROR'] .= blocked_ids_operation();
 				$GLOBALS['ERROR'] .= get_domains();
@@ -328,7 +328,7 @@ require 'html.php';
 			break;
 			
 		case 'Filtered Domains':
-			include 'sites_filtered_domains.php';
+			include './site/sites_filtered_domains.php';
 			if ($_POST) {
 				$GLOBALS['ERROR'] .= filtered_domains_operation();
 				$GLOBALS['ERROR'] .= get_domains();
@@ -345,7 +345,7 @@ require 'html.php';
 			break;
 			
 		case 'Visitor Password':
-			include 'sites_visitor_password.php';
+			include './site/sites_visitor_password.php';
 			if ($_POST) {
 				$GLOBALS['ERROR'] .= modify_visitor_password();
 				check_sites();
@@ -354,7 +354,7 @@ require 'html.php';
 			break;	
 		
 		case 'Delete Site':
-			include 'sites_delete_site.php';
+			include './site/sites_delete_site.php';
 			if ($_POST) {
 				$success = false;
 				$GLOBALS['ERROR'] .= delete_site($success);
@@ -381,7 +381,7 @@ require 'html.php';
 		default:
 			$GLOBALS['ACTION'] = 'Host Status';
 		case 'Host Status':
-			include 'hosts_host_status.php';
+			include './host/hosts_host_status.php';
 			$GLOBALS['ERROR'] .= host_status_html();
 			break;
 		}
@@ -394,14 +394,14 @@ require 'html.php';
 		case 'Settings':
 			if ($_SESSION['admin'] < 2) die(header('Location: logout.php')); 
 
-			include 'settings.php';
+			include './setting/settings.php';
 			if ($_POST) {
 				$GLOBALS['ERROR'] .= change_settings();
 			}
 			settings_html();
 			break;
 		case 'About CA':
-			include 'settings_about_ca.php';
+			include './setting/settings_about_ca.php';
 			settings_about_ca_html();
 			break;
 		}

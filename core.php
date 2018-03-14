@@ -4,7 +4,7 @@
 * module: Centcount Analyticsb Free Core PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/12/2018 *
+* date: 03/14/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved. *
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -17,7 +17,7 @@ $TIMESTAMP = (int)$START_TIME;
 $START_TIME = (int)($START_TIME * 1E6);
 if (isset($_GET['rn']) === true) ((int)$_GET['rn'] > 15E14 && (int)$_GET['rn'] < ($START_TIME - 36E8)) AND exit;
 
-@require 'config_redis.php';
+@require './config/config_redis.php';
 
 $REDIS_2 = new Redis();
 if ($REDIS_2->CONNECT(REDIS_IP_2, REDIS_PORT_2) !== true) exit;

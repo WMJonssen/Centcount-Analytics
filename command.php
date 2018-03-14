@@ -4,7 +4,7 @@
 * module: Centcount Analyticsb Free Contorl Host Command PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/12/2018 *
+* date: 03/14/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -12,7 +12,8 @@
 
 header('Access-Control-Allow-Origin:*');
 header('Content-type: text/html; charset=utf-8');
-@require 'config_common.php';
+@require './config/config_common.php';
+
 	$uid = SDATA_OUT('uid', 6, 'EXIT');
 	$t = SDATA_OUT('t', 6, 'EXIT');
 	$v = SDATA_OUT('v', 4, 'EXIT', 32);
