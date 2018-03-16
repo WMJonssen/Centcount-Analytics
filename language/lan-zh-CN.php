@@ -4,7 +4,7 @@
 * module: Centcount Analytics Free Language PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/12/2018 *
+* date: 03/16/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -180,6 +180,7 @@ $GLOBALS['indicator'] = array(
 	'Modify Site Configuration' => '修改站点配置',
 	'Site Description' => '站点描述',
 	'Create Date' => '创建日期',
+	'Site Information' => '站点信息',
 	'Site Status' => '运行状态',
 	'Site Configuration' => '站点统计配置',
 	'Run CA' => '启用统计服务',

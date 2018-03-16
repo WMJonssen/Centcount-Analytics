@@ -4,7 +4,7 @@
 * module: Centcount Analytics Free Deutsch Language PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/12/2018 *
+* date: 03/16/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -180,6 +180,7 @@ $GLOBALS['indicator'] = array(
 	'Modify Site Configuration' => 'Modify Site Configuration',
 	'Site Description' => 'Site Description',
 	'Create Date' => 'Create Date',
+	'Site Information' => 'Site Information',
 	'Site Status' => 'Site Status',
 	'Site Configuration' => 'Site Configuration',
 	'Run CA' => 'Run CA Service',
