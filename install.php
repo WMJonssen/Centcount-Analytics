@@ -4,7 +4,7 @@
 * module: Centcount Analytics Free Installation PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/14/2018 *
+* date: 03/17/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -19,6 +19,9 @@ header('Content-type: text/html; charset=utf-8');
 require 'html.php';
 
 $err = '';
+$chk = 0;
+
+if (isset($_GET['act']) && $_GET['act'] == 'check') $chk = 1;
 
 if ($_POST) {
 
@@ -79,28 +82,28 @@ function IniCA($DB_User, $DB_PW, $user, $pw) {
 		$con = mysqli_connect('localhost', $DB_User, $DB_PW);
 		if (mysqli_connect_errno($con)) {
 			$err = '<br/>Could not connect database';
- 		} else {
+		} else {
 			$err = '<br/>Connect to database successfully';
 		}
 		
 		$db_selected = mysqli_select_db($con, 'ccdata');
 		if (!$db_selected) {
- 			$err .=  '<br/>Database does not exist';
+			$err .=  '<br/>Database does not exist';
 			if (mysqli_query($con, 'CREATE DATABASE IF NOT EXISTS ccdata DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci')) {
- 				$err .= '<br/>Create database successfully';
- 			} else {
+				$err .= '<br/>Create database successfully';
+			} else {
 				$err .= '<br/>Creating database failed';
 				return $err;
- 			}
-  		} else {
+			}
+ 		} else {
 			$err .=  '<br/>Database exists';
 		}
 		
 		$db_selected = mysqli_select_db($con, 'ccdata');
 		if (!$db_selected) {
- 			$err .= '<br/>Select database failed';
+			$err .= '<br/>Select database failed';
 			return $err;
-  		}
+ 		}
 		
 
 		
@@ -229,10 +232,176 @@ UNIQUE indexDomain (Domain)
 
 
 		
- 		mysqli_close($con);
+		mysqli_close($con);
 
 		$err =  'Congratulations!<br/>Install CA Successfully.<br/>' . $err;
- 		return $err;
+		return $err;
+
+}
+
+function CheckEnv() {
+	
+		$error = '';
+		$err_count = 0;
+		date_default_timezone_set(DEFAULT_TIME_ZONE);
+
+		$error .= '<br>**********************************<br>';
+		$error .= 'Check MySQL Connection: <br>**********************************';
+		$con = mysqli_connect('localhost', ROOT_USER_LOCAL, ROOT_PASSWORD_LOCAL);
+		if (mysqli_connect_errno($con)) {
+			$error .= '<br/><i>Connect MySQL Failed</i>';
+			$err_count++;
+ 		} else {
+ 			$error .= '<br/>Connect MySQL Successfully';
+ 		}
+ 		$error .= '<br>**********************************<br><br>';
+		
+		if ($con) {
+			$error .= '<br>**********************************<br>';
+			$need = array('ONLY_FULL_GROUP_BY'=>0,'NO_AUTO_VALUE_ON_ZERO'=>0,'PIPES_AS_CONCAT'=>0,'ANSI_QUOTES'=>0);
+			$sql = "SELECT @@GLOBAL.sql_mode";
+			$result = mysqli_query($con, $sql);
+			if ($result && mysqli_num_rows($result)) {
+				$ret = mysqli_fetch_row($result);
+				$error .= 'Check SQL Mode: <br>**********************************';// $ret[0];
+				$sql_mode = explode(',',$ret[0]);
+				foreach ($sql_mode as $key) {
+					if (array_key_exists($key, $need)) {
+						$error .= '<br><i>' . $key . ' => Need To Be Removed</i>';
+						$err_count++;
+					} else {
+						$error .= '<br>' . $key . ' => OK';
+					}
+				};
+				mysqli_free_result($result);
+			} else {
+				$error .= '<i>Check SQL Mode Failed</i>';
+			}
+			$error .= '<br>**********************************<br><br>';
+
+			$error .= '<br>**********************************<br>';
+			$need = array('character_set_client'=>0,'character_set_connection'=>0,'character_set_database'=>0,'character_set_results'=>0,'character_set_server'=>0,'character_set_system'=>0);
+			$sql = "show variables like 'character%'";
+			$result = mysqli_query($con, $sql);
+			if ($result && mysqli_num_rows($result)) {
+				$error .= 'Check MySQL Character Set: <br>**********************************';
+				while ($ret = mysqli_fetch_row($result)) {
+					//$error .= '<br>', $ret[0], ' => ', $ret[1];
+					if (array_key_exists($ret[0], $need)) {
+						if ($ret[1] == 'utf8') {
+							$error .= '<br>' . $ret[0] . ' : ' . $ret[1] . ' => OK';
+						} else {
+							$error .= '<br><i>' . $ret[0] . ' : ' . $ret[1] . ' => WRONG (Require "utf8")</i>';
+							$err_count++;
+						}
+					} 
+				}
+				mysqli_free_result($result);
+			} else {
+				$error .= '<i>Check MySQL Character Set Failed</i>';
+				$err_count++;
+			}
+			$error .= '<br>**********************************<br><br>';
+
+			$error .= '<br>**********************************<br>';
+			$need = array('collation_connection'=>0,'collation_database'=>0,'collation_server'=>0);
+			$sql = "show variables like 'collation_%'";
+	 		$result = mysqli_query($con, $sql);
+			if ($result && mysqli_num_rows($result)) {
+				$error .= 'Check MySQL Collation: <br>**********************************';
+				while ($ret = mysqli_fetch_row($result)) {
+					//$error .= '<br>', $ret[0], ' => ', $ret[1];
+					if (array_key_exists($ret[0], $need)) {
+						if ($ret[1] == 'utf8_general_ci') {
+							$error .= '<br>' . $ret[0] . ' : ' . $ret[1] . ' => OK';
+						} else {
+							$error .= '<br><i>' . $ret[0] . ' : ' . $ret[1] . ' => WRONG (Require "utf8_general_ci")</i>';
+							$err_count++;
+						}
+					} 
+				}
+				mysqli_free_result($result);
+			} else {
+				$error .= '<i>Check MySQL Collation Failed</i>';
+				$err_count++;
+			}
+			$error .= '<br>**********************************<br><br>';
+		}
+		
+
+		$error .= '<br>**********************************<br>';
+		$need = array('session'=>0,'cgi-fcgi'=>0,'curl'=>0,'mbstring'=>0,'gd'=>0,'json'=>0,'mysqli'=>0,'redis'=>0);
+		
+		$Extensions = get_loaded_extensions();
+		if (count($Extensions)) {
+			$error .= 'Check PHP Extension: <br>**********************************';
+			foreach ($Extensions as $key => $value) {
+				//$error .= '<br>', $value;
+				if (array_key_exists($value, $need)) $need[$value] = 1;
+			};
+			foreach ($need as $key => $value) {
+				if ($value == 1) {
+					$error .= '<br>' . $key . ' => OK';
+				} else {
+					$error .= '<br><i>' . $key . ' => Missed</i>';
+					$err_count++;
+				}
+			};
+		} else {
+			$error .= '<i>Check PHP Extension Failed</i>';
+			$err_count++;
+		}	
+		$error .= '<br>**********************************<br><br>';
+
+
+		//********** connect redis begin ***********
+		$error .= '<br>**********************************<br>';
+		$error .= 'Check Redis: <br>**********************************';
+		$REDIS_0 = new Redis();
+		if ($REDIS_0->CONNECT(REDIS_IP_0, REDIS_PORT_0) !== true) {
+			$error .= '<br><i>Redis 0 => ERROR</i>';
+			$err_count++;
+		} else {
+			$error .= '<br>Redis 0 => OK';
+		}
+		$REDIS_1 = new Redis();
+		if ($REDIS_1->CONNECT(REDIS_IP_1, REDIS_PORT_1) !== true) {
+			$error .= '<br><i>Redis 1 => ERROR</i>';
+			$err_count++;
+		} else {
+			$error .= '<br>Redis 1 => OK';
+		}
+		$REDIS_2 = new Redis();
+		if ($REDIS_2->CONNECT(REDIS_IP_2, REDIS_PORT_2) !== true) {
+			$error .= '<br><i>Redis 2 => ERROR</i>';
+			$err_count++;
+		} else {
+			$error .= '<br>Redis 2 => OK';
+		}
+		$REDIS_3 = new Redis();
+		if ($REDIS_3->CONNECT(REDIS_IP_3, REDIS_PORT_3) !== true) {
+			$error .= '<br><i>Redis 3 => ERROR</i>';
+			$err_count++;
+		} else {
+			$error .= '<br>Redis 3 => OK';
+		}
+		$error .= '<br>**********************************<br><br>';
+		//*********** connect redis end ************
+
+
+		//checking summary 
+		$error .= '<b>';
+		if ($err_count == 0) {
+			$error .= 'It Is Ready For Installing Centcount Analytics';
+		} else if ($err_count == 1) {
+			$error .= 'There Is ' . $err_count . ' Issue Need To Be Solved Before Installing Centcount Analytics';
+		} else {
+			$error .= 'There Are ' . $err_count . ' Issues Need To Be Solved Before Installing Centcount Analytics';
+		}
+		$error .= '</b><br><br>';
+
+		//return error
+		return $error;
 
 }
 
@@ -322,6 +491,7 @@ function check_table($con, $tb, $db) {
 <style type="text/css">
 p{padding:15px;}
 b{font-weight:bold;}
+i{color:red;}
 </style>
 
 </head>
@@ -376,7 +546,27 @@ b{font-weight:bold;}
 </div>
 
 
-<div id="agreement" class="frameagree" style="display:block;">
+<div id="CheckEnv" class="frameagree" <?php echo ($err != '' ? '' : 'style="display:block;"') ?>>
+	
+	<div class="agreebtn">
+		Check Server Environment
+	</div>
+			
+	<div class="agreebox">
+		<p>
+			<?php echo CheckEnv(); ?>
+		</p>
+	</div>
+			
+	<div class="agreebtn">
+		<a href="install.php?act=check" style="margin-right:100px;">Check Again</a>
+		<a href="javascript:hide_me('CheckEnv');">Next Step</a>
+	</div>
+
+</div> 
+
+
+<div id="agreement" class="frameagree" <?php echo ($chk || $err != '' ? '' : 'style="display:block;"') ?>>
 	
 	<div class="agreebtn">
 		Centcount Analytics Agreement
@@ -456,6 +646,10 @@ Author/Owner: WM Jonssen<br/>
 
 
 <script type="text/javascript">
+
+	function hide_me(id) {
+		document.getElementById(id).style.display = "none";
+	}
 
 	function showAgreement() {
 		if (document.getElementById("agreement").style.display != "block") {
