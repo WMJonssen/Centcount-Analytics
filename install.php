@@ -254,6 +254,7 @@ function CheckEnv() {
 		pclose($TMP_FP);
 		$error .= '<br>OS: ' . PHP_OS . ' - ' . str_replace('\n \l', '', $tmp) . ' - '. (log(PHP_INT_MAX + 1, 2) + 1). 'bit';
 		$error .= '<br>Server: ' . $_SERVER['SERVER_SOFTWARE'];
+		//check php
 		$tmp = explode('-', PHP_VERSION);
 		if ((float)$tmp[0] < 5.6) {
 			$error .= '<br><i>PHP: ' . $tmp[0] . ' (Require >= 5.6)</i>';
@@ -261,12 +262,34 @@ function CheckEnv() {
 		} else {
 			$error .= '<br>PHP: ' . $tmp[0];
 		}
-		$tmp = explode('-', mysqli_get_server_info($con));
-		$error .= '<br>MySQL: ' . $tmp[0];
+		//check mysql
+		if ($con) {
+			$tmp = explode('-', mysqli_get_server_info($con));
+			$error .= '<br>MySQL: ' . $tmp[0];
+		} else {
+			$error .= '<br><i>MySQL: Missed</i>';
+			$err_count++;
+		}
+		//check redis
 		$TMP_FP = popen('redis-cli --version', 'r');
 		$tmp = trim(fread($TMP_FP, 128));
 		pclose($TMP_FP);
-		$error .= '<br>Redis: ' . substr($tmp, 9);
+		if (substr($tmp, 0, 9) != 'redis-cli') {
+			$error .= '<br><i>Redis: Missed</i>';
+			$err_count++;
+		} else {
+			$error .= '<br>Redis: ' . substr($tmp, 9);
+		}
+		//check postfix
+		$TMP_FP = popen('ps aux|grep postfix -c', 'r');
+		$tmp = trim(fread($TMP_FP, 128));
+		pclose($TMP_FP);
+		if ((int)$tmp > 1) {
+			$error .= '<br>Postfix: OK';
+		} else {
+			$error .= '<br><i>Postfix: Missed</i>';
+			$err_count++;
+		}
  		$error .= '<br>**************************************************<br><br>';
 
  		//check mysql 
