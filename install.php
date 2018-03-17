@@ -636,7 +636,7 @@ Author/Owner: WM Jonssen<br/>
 	</div>
 			
 	<div class="agreebtn">
-		<a href="javascript:showAgreement();">Accept</a>
+		<a href="javascript:hide_me('agreement');">Accept</a>
 	</div>
 
 </div> 
@@ -649,14 +649,6 @@ Author/Owner: WM Jonssen<br/>
 
 	function hide_me(id) {
 		document.getElementById(id).style.display = "none";
-	}
-
-	function showAgreement() {
-		if (document.getElementById("agreement").style.display != "block") {
-			document.getElementById("agreement").style.display = "block";
-		} else {
-			document.getElementById("agreement").style.display = "none";
-		}
 	}
 	
 	function changeCode(){ 
