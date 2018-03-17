@@ -244,26 +244,50 @@ function CheckEnv() {
 		$error = '';
 		$err_count = 0;
 		date_default_timezone_set(DEFAULT_TIME_ZONE);
-
-		$error .= '<br>**********************************<br>';
-		$error .= 'Check MySQL Connection: <br>**********************************';
 		$con = mysqli_connect('localhost', ROOT_USER_LOCAL, ROOT_PASSWORD_LOCAL);
+
+		//check version
+		$error .= '<br>**************************************************<br>';
+		$error .= 'Check Version: <br>**************************************************';
+		$TMP_FP = popen('cat /etc/issue', 'r');
+		$tmp = trim(fread($TMP_FP, 128));
+		pclose($TMP_FP);
+		$error .= '<br>OS: ' . PHP_OS . ' - ' . str_replace('\n \l', '', $tmp);
+		$error .= '<br>Server: ' . $_SERVER['SERVER_SOFTWARE'];
+		$tmp = explode('-', PHP_VERSION);
+		if ((float)$tmp[0] < 5.6) {
+			$error .= '<br><i>PHP: ' . $tmp[0] . ' (Require >= 5.6)</i>';
+			$err_count++;
+		} else {
+			$error .= '<br>PHP: ' . $tmp[0];
+		}
+		$tmp = explode('-', mysqli_get_server_info($con));
+		$error .= '<br>MySQL: ' . $tmp[0];
+		$TMP_FP = popen('redis-cli --version', 'r');
+		$tmp = trim(fread($TMP_FP, 128));
+		pclose($TMP_FP);
+		$error .= '<br>Redis: ' . substr($tmp, 9);
+ 		$error .= '<br>**************************************************<br><br>';
+
+ 		//check mysql 
+		$error .= '<br>**************************************************<br>';
+		$error .= 'Check MySQL Connection: <br>**************************************************';
 		if (mysqli_connect_errno($con)) {
 			$error .= '<br/><i>Connect MySQL Failed</i>';
 			$err_count++;
  		} else {
  			$error .= '<br/>Connect MySQL Successfully';
  		}
- 		$error .= '<br>**********************************<br><br>';
+ 		$error .= '<br>**************************************************<br><br>';
 		
 		if ($con) {
-			$error .= '<br>**********************************<br>';
+			$error .= '<br>**************************************************<br>';
 			$need = array('ONLY_FULL_GROUP_BY'=>0,'NO_AUTO_VALUE_ON_ZERO'=>0,'PIPES_AS_CONCAT'=>0,'ANSI_QUOTES'=>0);
 			$sql = "SELECT @@GLOBAL.sql_mode";
 			$result = mysqli_query($con, $sql);
 			if ($result && mysqli_num_rows($result)) {
 				$ret = mysqli_fetch_row($result);
-				$error .= 'Check SQL Mode: <br>**********************************';// $ret[0];
+				$error .= 'Check SQL Mode: <br>**************************************************';// $ret[0];
 				$sql_mode = explode(',',$ret[0]);
 				foreach ($sql_mode as $key) {
 					if (array_key_exists($key, $need)) {
@@ -277,14 +301,14 @@ function CheckEnv() {
 			} else {
 				$error .= '<i>Check SQL Mode Failed</i>';
 			}
-			$error .= '<br>**********************************<br><br>';
+			$error .= '<br>**************************************************<br><br>';
 
-			$error .= '<br>**********************************<br>';
+			$error .= '<br>**************************************************<br>';
 			$need = array('character_set_client'=>0,'character_set_connection'=>0,'character_set_database'=>0,'character_set_results'=>0,'character_set_server'=>0,'character_set_system'=>0);
 			$sql = "show variables like 'character%'";
 			$result = mysqli_query($con, $sql);
 			if ($result && mysqli_num_rows($result)) {
-				$error .= 'Check MySQL Character Set: <br>**********************************';
+				$error .= 'Check MySQL Character Set: <br>**************************************************';
 				while ($ret = mysqli_fetch_row($result)) {
 					//$error .= '<br>', $ret[0], ' => ', $ret[1];
 					if (array_key_exists($ret[0], $need)) {
@@ -301,14 +325,14 @@ function CheckEnv() {
 				$error .= '<i>Check MySQL Character Set Failed</i>';
 				$err_count++;
 			}
-			$error .= '<br>**********************************<br><br>';
+			$error .= '<br>**************************************************<br><br>';
 
-			$error .= '<br>**********************************<br>';
+			$error .= '<br>**************************************************<br>';
 			$need = array('collation_connection'=>0,'collation_database'=>0,'collation_server'=>0);
 			$sql = "show variables like 'collation_%'";
 	 		$result = mysqli_query($con, $sql);
 			if ($result && mysqli_num_rows($result)) {
-				$error .= 'Check MySQL Collation: <br>**********************************';
+				$error .= 'Check MySQL Collation: <br>**************************************************';
 				while ($ret = mysqli_fetch_row($result)) {
 					//$error .= '<br>', $ret[0], ' => ', $ret[1];
 					if (array_key_exists($ret[0], $need)) {
@@ -325,16 +349,16 @@ function CheckEnv() {
 				$error .= '<i>Check MySQL Collation Failed</i>';
 				$err_count++;
 			}
-			$error .= '<br>**********************************<br><br>';
+			$error .= '<br>**************************************************<br><br>';
 		}
 		
 
-		$error .= '<br>**********************************<br>';
+		$error .= '<br>**************************************************<br>';
 		$need = array('session'=>0,'cgi-fcgi'=>0,'curl'=>0,'mbstring'=>0,'gd'=>0,'json'=>0,'mysqli'=>0,'redis'=>0);
 		
 		$Extensions = get_loaded_extensions();
 		if (count($Extensions)) {
-			$error .= 'Check PHP Extension: <br>**********************************';
+			$error .= 'Check PHP Extension: <br>**************************************************';
 			foreach ($Extensions as $key => $value) {
 				//$error .= '<br>', $value;
 				if (array_key_exists($value, $need)) $need[$value] = 1;
@@ -351,12 +375,12 @@ function CheckEnv() {
 			$error .= '<i>Check PHP Extension Failed</i>';
 			$err_count++;
 		}	
-		$error .= '<br>**********************************<br><br>';
+		$error .= '<br>**************************************************<br><br>';
 
 
 		//********** connect redis begin ***********
-		$error .= '<br>**********************************<br>';
-		$error .= 'Check Redis: <br>**********************************';
+		$error .= '<br>**************************************************<br>';
+		$error .= 'Check Redis: <br>**************************************************';
 		$REDIS_0 = new Redis();
 		if ($REDIS_0->CONNECT(REDIS_IP_0, REDIS_PORT_0) !== true) {
 			$error .= '<br><i>Redis 0 => ERROR</i>';
@@ -385,7 +409,7 @@ function CheckEnv() {
 		} else {
 			$error .= '<br>Redis 3 => OK';
 		}
-		$error .= '<br>**********************************<br><br>';
+		$error .= '<br>**************************************************<br><br>';
 		//*********** connect redis end ************
 
 
