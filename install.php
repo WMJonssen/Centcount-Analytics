@@ -252,7 +252,7 @@ function CheckEnv() {
 		$TMP_FP = popen('cat /etc/issue', 'r');
 		$tmp = trim(fread($TMP_FP, 128));
 		pclose($TMP_FP);
-		$error .= '<br>OS: ' . PHP_OS . ' - ' . str_replace('\n \l', '', $tmp);
+		$error .= '<br>OS: ' . PHP_OS . ' - ' . str_replace('\n \l', '', $tmp) . ' - '. (log(PHP_INT_MAX + 1, 2) + 1). 'bit';
 		$error .= '<br>Server: ' . $_SERVER['SERVER_SOFTWARE'];
 		$tmp = explode('-', PHP_VERSION);
 		if ((float)$tmp[0] < 5.6) {
