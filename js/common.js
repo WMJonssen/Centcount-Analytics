@@ -3,7 +3,7 @@
 * module: Centcount Analytics Free CA Common JS Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/12/2018 *
+* date: 03/20/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -728,8 +728,8 @@ function menu_click2(o) {
 */
 function side_menu_resize(x) {
 	try {
-		var bcw = document.documentElement.clientWidth || document.body.clientWidth,//browser client width by js
-			bch = document.documentElement.clientHeight || document.body.clientHeight,//browser client height by js
+		var bcw = document.body.clientWidth || document.documentElement.clientWidth,//browser client width by js
+			bch = document.body.clientHeight || document.documentElement.clientHeight,//browser client height by js
 			objL = document.getElementById("leftbox"),
 			objR = document.getElementById("rightbox"),
 			leftboxW = parseInt(objL.offsetWidth),

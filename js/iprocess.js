@@ -3,7 +3,7 @@
 * module: Centcount Analytics IPROCESS INFORMATION JS Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/12/2018 *
+* date: 03/19/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -425,13 +425,13 @@ function IPROCESS(uid, r, timer, host, box, Lan, Extra) {
 				for (var i=2; i<n; i+=2) {
 					html += ((i/2 - 1) + ': ' + parseInt(AjaxData[len][i+1]/AjaxData[len][i]) / 1000 + ' ms (' + AjaxData[len][i] + ')<br/>');
 				}
-				/*/missed CA, VA, VC, VID, IND RECORD COUNT
-				html += ('<br/>Missed CA: ' + parseInt(AjaxData[len][n]) + '<br/>');
-				html += ('Missed VA: ' + parseInt(AjaxData[len][n+1]) + '<br/>');
-				html += ('Missed VC: ' + parseInt(AjaxData[len][n+2]) + '<br/>');
-				html += ('Missed VID: ' + parseInt(AjaxData[len][n+3]) + '<br/>');
-				html += ('Missed IND: ' + parseInt(AjaxData[len][n+4]) + '<br/>');
-				*/
+				//missed CA, VA, VC, VID, IND RECORD COUNT
+				html += ('<br/>Total Memory: ' + parseInt(AjaxData[len][n]) + ' MB');
+				html += ('<br/>Free Memory: ' + parseInt(AjaxData[len][n+2]) + ' MB');
+				html += ('<br/>Buffer/Cache: ' + parseInt(AjaxData[len][n] - AjaxData[len][n+1] - AjaxData[len][n+2]) + ' MB');
+				html += ('<br/>Total Disk: ' + parseInt(AjaxData[len][n+3]) + ' GB');
+				html += ('<br/>Free Disk: ' + parseInt(AjaxData[len][n+3] - AjaxData[len][n+4]) + ' GB');
+
 				if (html) document.getElementById('PerformanceList').innerHTML = html;
 			}
 		} catch(z) {
@@ -454,7 +454,7 @@ function IPROCESS(uid, r, timer, host, box, Lan, Extra) {
 						"<a href='javascript:"+box+".pSet(0, 99)' class='wbtn'>CLEAN TODAY DATA</a>" +
 						(AjaxData[0][8] ? "<span>START NEW PROCESS</span>" : "<a href='javascript:"+box+".pSet(0, 13)' class='wbtn'>START NEW PROCESS</a>")+
 						"<a href='javascript:"+box+".pSet(0, " + (AjaxData[0][8] ? 15 : 14) + ")' "+(AjaxData[0][8] ? "class='redbtn'>ENABLE PROCESS" : "class='wbtn'>DISABLE PROCESS") + "</a>" + 
-						"<a href='javascript:"+box+".pSet(0, " + (AjaxData[0][10] ? 21 : 20) + ")' "+(AjaxData[0][10] ? "class='redbtn'>ENABLE PERSISTENCE" : "class='wbtn'>DISABLE PERSISTENCE") + "</a>" + 
+						"<a href='javascript:"+box+".pSet(0, " + (AjaxData[0][10] ? 21 : 20) + ")' "+(AjaxData[0][10] ? "class='redbtn'>ENABLE STORAGE" : "class='wbtn'>DISABLE STORAGE") + "</a>" + 
 						//(AjaxData[0][8] ? "<span>PAUSE ALL PROCESS</span>" : "<a href='javascript:"+box+".pSet(0, 12)' class='wbtn'>PAUSE ALL PROCESS</a>")+
 						//(AjaxData[0][8] ? "<span>RESUME ALL PROCESS</span>" : "<a href='javascript:"+box+".pSet(0, 11)' class='wbtn'>RESUME ALL PROCESS</a>")+
 						//(AjaxData[0][8] ? "<span>STOP ALL PROCESS</span>" : "<a href='javascript:"+box+".pSet(0, 10)' class='wbtn'>STOP ALL PROCESS</a>")+
@@ -478,7 +478,7 @@ function IPROCESS(uid, r, timer, host, box, Lan, Extra) {
 					"<a href='javascript:"+box+".pSet(0, 99)' class='wbtn'>CLEAN TODAY DATA</a>" +
 					(AjaxData[0][8] ? "<span>START NEW PROCESS</span>" : "<a href='javascript:"+box+".pSet(0, 13)' class='wbtn'>START NEW PROCESS</a>")+
 					"<a href='javascript:"+box+".pSet(0, " + (AjaxData[0][8] ? 15 : 14) + ")' "+(AjaxData[0][8] ? "class='redbtn'>ENABLE PROCESS" : "class='wbtn'>DISABLE PROCESS") + "</a>" + 
-					"<a href='javascript:"+box+".pSet(0, " + (AjaxData[0][10] ? 21 : 20) + ")' "+(AjaxData[0][10] ? "class='redbtn'>ENABLE PERSISTENCE" : "class='wbtn'>DISABLE PERSISTENCE") + "</a>" + 
+					"<a href='javascript:"+box+".pSet(0, " + (AjaxData[0][10] ? 21 : 20) + ")' "+(AjaxData[0][10] ? "class='redbtn'>ENABLE STORAGE" : "class='wbtn'>DISABLE STORAGE") + "</a>" + 
 					//(AjaxData[0][8] ? "<span>PAUSE ALL PROCESS</span>" : "<a href='javascript:"+box+".pSet(0, 12)' class='wbtn'>PAUSE ALL PROCESS</a>")+
 					//(AjaxData[0][8] ? "<span>RESUME ALL PROCESS</span>" : "<a href='javascript:"+box+".pSet(0, 11)' class='wbtn'>RESUME ALL PROCESS</a>")+
 					//(AjaxData[0][8] ? "<span>STOP ALL PROCESS</span>" : "<a href='javascript:"+box+".pSet(0, 10)' class='wbtn'>STOP ALL PROCESS</a>")+
@@ -531,16 +531,16 @@ function IPROCESS(uid, r, timer, host, box, Lan, Extra) {
 				if (len > 1) for (var i = 1; i < len; i++) {
 					CurP += parseInt(AjaxData[i][6]);
 					if (AjaxData[i][1] == 1) pColor = 1;
-					MemU += parseInt(AjaxData[i][10]);
+					//MemU += parseInt(AjaxData[i][10]);
 				}
 				pColor = pColor ? "#46BFBD" : "#aaa";
 				AvgC =  parseInt(AjaxData[0][1]) ? parseFloat((AjaxData[0][2] / (AjaxData[0][1] * 1000)).toFixed(2)) : 0,
 				PeakP = AvgC ? Math.ceil(1000 / AvgC) : 100;
 				FreeP = PeakP > CurP ? PeakP - CurP : 100;
-				MemU = MemU < 1048576 ? (MemU / 1024).toFixed(2) + ' KB' : (MemU / 1048576).toFixed(2) + ' MB';
+				//MemU = MemU < 1048576 ? (MemU / 1024).toFixed(2) + ' KB' : (MemU / 1048576).toFixed(2) + ' MB';
 
 				document.getElementById('T_' + No).innerHTML = CurP;//tips
-				document.getElementById('D_' + No).innerHTML = 'Request Queues: ' + AjaxData[0][0] + '<br/>Total Processed: ' + AjaxData[0][1] + '<br/>Avg Consume: ' + AvgC + ' ms<br/>Kernel: ' + AjaxData[0][9] + '<br/>Kernel Memory: ' + MemU + '<br/>Storage: ' + AjaxData[0][11] + '<br/>Fatal Errors: ' + (AjaxData[0][3] > 0 ? '<a href="javascript:'+box+'.gErr(2, 0)">' + AjaxData[0][3] + '</a>' : AjaxData[0][3]) + '<br/>Execute Failures: ' + (AjaxData[0][5] > 0 ? '<a href="javascript:'+box+'.gErr(1, 0)">' + AjaxData[0][5] + '</a>' : AjaxData[0][5]) + '<br/>Bad Requests: ' + (AjaxData[0][4] > 0 ? '<a href="javascript:'+box+'.gErr(3, 0)">' + AjaxData[0][4] + '</a>' : AjaxData[0][4]);//details
+				document.getElementById('D_' + No).innerHTML = 'Request Queues: ' + AjaxData[0][0] + '<br/>Total Processed: ' + AjaxData[0][1] + '<br/>Avg Consume: ' + AvgC + ' ms<br/>Kernel: ' + AjaxData[0][9] + '<br/>Storage: ' + AjaxData[0][11] + '<br/>Fatal Errors: ' + (AjaxData[0][3] > 0 ? '<a href="javascript:'+box+'.gErr(2, 0)">' + AjaxData[0][3] + '</a>' : AjaxData[0][3]) + '<br/>Execute Failures: ' + (AjaxData[0][5] > 0 ? '<a href="javascript:'+box+'.gErr(1, 0)">' + AjaxData[0][5] + '</a>' : AjaxData[0][5]) + '<br/>Bad Requests: ' + (AjaxData[0][4] > 0 ? '<a href="javascript:'+box+'.gErr(3, 0)">' + AjaxData[0][4] + '</a>' : AjaxData[0][4]);//details  '<br/>Kernel Memory: ' + MemU +
 				
 			} else {
 				
@@ -604,16 +604,16 @@ function IPROCESS(uid, r, timer, host, box, Lan, Extra) {
 				if (len > 1) for (var i = 1; i < len; i++) {
 					CurP += parseInt(AjaxData[i][6]);
 					if (AjaxData[i][1] == 1) pColor = 1;
-					MemU += parseInt(AjaxData[i][10]);
+					//MemU += parseInt(AjaxData[i][10]);
 				}
 				pColor = pColor ? "#46BFBD" : "#aaa";
 				AvgC =  parseInt(AjaxData[0][1]) ? parseFloat((AjaxData[0][2] / (AjaxData[0][1] * 1000)).toFixed(2)) : 0,
 				PeakP = AvgC ? Math.ceil(1000 / AvgC) : 100;
 				FreeP = PeakP > CurP ? PeakP - CurP : 100;
-				MemU = MemU < 1048576 ? (MemU / 1024).toFixed(2) + ' KB' : (MemU / 1048576).toFixed(2) + ' MB';
+				//MemU = MemU < 1048576 ? (MemU / 1024).toFixed(2) + ' KB' : (MemU / 1048576).toFixed(2) + ' MB';
 				
 				document.getElementById('T_' + No).innerHTML = CurP;//tips
-				document.getElementById('D_' + No).innerHTML = 'Request Queues: ' + AjaxData[0][0] + '<br/>Total Processed: ' + AjaxData[0][1] + '<br/>Avg Consume: ' + AvgC + ' ms<br/>Kernel: ' + AjaxData[0][9] + '<br/>Kernel Memory: ' + MemU + '<br/>Storage: ' + AjaxData[0][11] + '<br/>Fatal Errors: ' + (AjaxData[0][3] > 0 ? '<a href="javascript:'+box+'.gErr(2, 0)">' + AjaxData[0][3] + '</a>' : AjaxData[0][3]) + '<br/>Execute Failures: ' + (AjaxData[0][5] > 0 ? '<a href="javascript:'+box+'.gErr(1, 0)">' + AjaxData[0][5] + '</a>' : AjaxData[0][5]) + '<br/>Bad Requests: ' + (AjaxData[0][4] > 0 ? '<a href="javascript:'+box+'.gErr(3, 0)">' + AjaxData[0][4] + '</a>' : AjaxData[0][4]);//details
+				document.getElementById('D_' + No).innerHTML = 'Request Queues: ' + AjaxData[0][0] + '<br/>Total Processed: ' + AjaxData[0][1] + '<br/>Avg Consume: ' + AvgC + ' ms<br/>Kernel: ' + AjaxData[0][9] + '<br/>Storage: ' + AjaxData[0][11] + '<br/>Fatal Errors: ' + (AjaxData[0][3] > 0 ? '<a href="javascript:'+box+'.gErr(2, 0)">' + AjaxData[0][3] + '</a>' : AjaxData[0][3]) + '<br/>Execute Failures: ' + (AjaxData[0][5] > 0 ? '<a href="javascript:'+box+'.gErr(1, 0)">' + AjaxData[0][5] + '</a>' : AjaxData[0][5]) + '<br/>Bad Requests: ' + (AjaxData[0][4] > 0 ? '<a href="javascript:'+box+'.gErr(3, 0)">' + AjaxData[0][4] + '</a>' : AjaxData[0][4]);//details '<br/>Kernel Memory: ' + MemU + 
 				
 			} else {
 				
