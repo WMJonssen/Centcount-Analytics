@@ -30,7 +30,7 @@ function host_status_html() {
 			<div class="inputbox">
 				<div class="msgTitle">Process Options</div>
 				<div class="closebtn">
-					<a href="javascript:showInputBox(0)" style="height:24px; float:left;"><img src="images/inputclose.svg" style="width:24px; height:24px;" alt="CLOSE" title="CLOSE"/></a>
+					<a href="javascript:showInputBox(0)" style="height:24px; float:left;"><img src="images/inputclose.png" style="width:24px; height:24px;" alt="CLOSE" title="CLOSE"/></a>
 				</div>
 
 				<div id="msgText" class="msgText">text message</div>
