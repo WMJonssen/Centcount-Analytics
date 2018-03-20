@@ -4,7 +4,7 @@
 * module: Centcount Analyticsb Free Contorl Host Command PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/14/2018 *
+* date: 03/19/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -53,7 +53,7 @@ header('Content-type: text/html; charset=utf-8');
 		}
 		$PROCESS_ARRAY = $REDIS_0->ZREVRANGEBYSCORE('SSIDS', '+INF', '-INF', array('withscores'=>true, 'limit'=>array(0, 20))); 
 		$arr_data[] = $PROCESS_ARRAY;
-		$PROCESS_ARRAY = $REDIS_0->MGET(array('PerformanceCountJS', 'PerformanceConsumeJS', 'PerformanceCount0', 'PerformanceConsume0','PerformanceCount1', 'PerformanceConsume1','PerformanceCount2', 'PerformanceConsume2','PerformanceCount3', 'PerformanceConsume3','PerformanceCount4', 'PerformanceConsume4','PerformanceCount5', 'PerformanceConsume5','PerformanceCount6', 'PerformanceConsume6','PerformanceCount7', 'PerformanceConsume7','PerformanceCount8', 'PerformanceConsume8','PerformanceCount9', 'PerformanceConsume9','PerformanceCount10', 'PerformanceConsume10','PerformanceCount11', 'PerformanceConsume11','PerformanceCount12', 'PerformanceConsume12', 'MissedCA', 'MissedVA', 'MissedVC', 'MissedVID', 'MissedIND')); 
+		$PROCESS_ARRAY = $REDIS_0->MGET(array('PerformanceCountJS', 'PerformanceConsumeJS', 'PerformanceCount0', 'PerformanceConsume0','PerformanceCount1', 'PerformanceConsume1','PerformanceCount2', 'PerformanceConsume2','PerformanceCount3', 'PerformanceConsume3','PerformanceCount4', 'PerformanceConsume4','PerformanceCount5', 'PerformanceConsume5','PerformanceCount6', 'PerformanceConsume6','PerformanceCount7', 'PerformanceConsume7','PerformanceCount8', 'PerformanceConsume8','PerformanceCount9', 'PerformanceConsume9','PerformanceCount10', 'PerformanceConsume10','PerformanceCount11', 'PerformanceConsume11','PerformanceCount12', 'PerformanceConsume12', 'TotalMemory','UsedMemory','FreeMemory', 'TotalDisk','UsedDisk')); 
 		$arr_data[] = $PROCESS_ARRAY;
 		echo json_encode($arr_data);
 		break;

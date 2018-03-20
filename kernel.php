@@ -4,7 +4,7 @@
 * module: Centcount Analyticsb Free Kernel PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/12/2018 *
+* date: 03/20/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -13,7 +13,7 @@
 
 ignore_user_abort(true); 
 set_time_limit(0); 
-define('KERNEL_VERSION', '1.00.180312001');
+define('KERNEL_VERSION', '1.00.180320001');
 
 @require './config/config_common.php';
 require 'kernel.sql.php';
@@ -48,6 +48,7 @@ define('KEY_ERROR_EXECUTE', 'ErrorExecute');
 $PROCESS_MAX = $REDIS_0->GET(KEY_PROCESS_MAX);
 if ($PROCESS_MAX) {
 	$PROCESS_MAX = (int)$PROCESS_MAX;
+	if ($PROCESS_MAX < 1) $PROCESS_MAX = 4;
 } else {
 	$PROCESS_MAX = 4;
 	$REDIS_0->SET(KEY_PROCESS_MAX, 4);
@@ -55,9 +56,10 @@ if ($PROCESS_MAX) {
 $PROCESS_MIN = $REDIS_0->GET(KEY_PROCESS_MIN);
 if ($PROCESS_MIN) {
 	$PROCESS_MIN = (int)$PROCESS_MIN;
+	if ($PROCESS_MIN < 1) $PROCESS_MIN = 2;
 } else {
-	$PROCESS_MIN = 1;
-	$REDIS_0->SET(KEY_PROCESS_MIN, 1);
+	$PROCESS_MIN = 2;
+	$REDIS_0->SET(KEY_PROCESS_MIN, 2);
 }
 $REQUEST = $REDIS_0->SCARD(KEY_PROCESS_LIST);
 if ($REQUEST >= $PROCESS_MAX) exit;
@@ -106,6 +108,7 @@ if ($REDIS_0->SCARD('TicketRegS') > 0) {
 	}
 	$REDIS_0->DEL('CheckTicketMutualExclusion');
 }
+get_server_info($REDIS_0);
 while (true) {
 		$PROCESS_LAST_RESPONSE_TIME = (int)(microtime(true) * 1E6);
 		$PROCESS_STATUS = $REDIS_0->HGET($PID, 'Status');
@@ -263,6 +266,7 @@ while (true) {
 			$REDIS_0->SET('TimeLine', $GLOBALS['RN_G']);
 			if ($REDIS_0->EXISTS('PersistenceMutualExclusion') === false) pclose(popen('php -f ' . __DIR__ . '/persistence.php &', 'r'));
 			if ($REDIS_0->EXISTS(KEY_REQUEST_LIST) === false) $GLOBALS['RN_G'] = $PROCESS_LAST_RESPONSE_TIME;
+			get_server_info($REDIS_0);
 		}
 		if ($QUIT > 2) {
 			$REDIS_0->LPUSH(KEY_ERROR_FATAL, 'ERROR NO: 8001, TIME: ' . date('Y-m-d H:i:s',time()) . ', ' . $PID . '<br><br>REQUEST: ' . $REQUEST . '<br><br>DB ERROR - ' . $GLOBALS['ERROR_G'].'<br><br>');

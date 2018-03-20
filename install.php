@@ -4,7 +4,7 @@
 * module: Centcount Analytics Free Installation PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/17/2018 *
+* date: 03/20/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -246,6 +246,45 @@ function CheckEnv() {
 		date_default_timezone_set(DEFAULT_TIME_ZONE);
 		$con = mysqli_connect('localhost', ROOT_USER_LOCAL, ROOT_PASSWORD_LOCAL);
 
+		//check Configurstion
+		$error .= '<br>**************************************************<br>';
+		$error .= 'Check Server Configuration: <br>**************************************************';
+		//get cpu
+		$TMP_FP = popen('cat /proc/cpuinfo| grep "processor"| wc -l', 'r');
+		$tmp = fread($TMP_FP, 1024);
+		pclose($TMP_FP);
+		if ($tmp) {
+			$error .= '<br>CPU: ' . $tmp . ' Core(s)';
+		}
+		//get memory
+		$TMP_FP = popen('free -m | grep -E "^(Mem:)"', 'r');
+		$tmp = fread($TMP_FP, 1024);
+		pclose($TMP_FP);
+		if ($tmp) {
+			$tmp = preg_replace("/\s(?=\s)/", "\\1", $tmp);
+			$tmp = explode(' ', $tmp);
+			if (count($tmp) > 3) {
+				$error .= '<br>Memory: ' . $tmp[1] . ' MB';
+			}
+		}
+		//get disk size
+		$TMP_FP = popen('df -BG | grep -E "^(/)"', 'r');
+		$tmp = fread($TMP_FP, 1024);
+		pclose($TMP_FP);
+		if ($tmp) {
+			$tmp = preg_replace("/\s(?=\s)/", "\\1", $tmp);
+			$tmp = explode(' ', $tmp);
+			$n = (int)(count($tmp) / 6);
+			$total = 0;
+			$used = 0;
+			for ($i=0; $i<$n; $i++) {
+				$t = $i * 6 + 1;
+				$total += (int)$tmp[$t];
+			}
+			$error .= '<br>Disk: ' . $total . ' GB';
+		}
+		$error .= '<br>**************************************************<br><br>';
+
 		//check version
 		$error .= '<br>**************************************************<br>';
 		$error .= 'Check Version: <br>**************************************************';
@@ -311,15 +350,20 @@ function CheckEnv() {
 			if ($result && mysqli_num_rows($result)) {
 				$ret = mysqli_fetch_row($result);
 				$error .= 'Check SQL Mode: <br>**************************************************';// $ret[0];
-				$sql_mode = explode(',',$ret[0]);
-				foreach ($sql_mode as $key) {
-					if (array_key_exists($key, $need)) {
-						$error .= '<br><i>' . $key . ' => Need To Be Removed</i>';
-						$err_count++;
-					} else {
-						$error .= '<br>' . $key . ' => OK';
-					}
-				};
+				$sql_mode = trim($ret[0]);
+				if ($sql_mode) {
+					$sql_mode = explode(',', trim($ret[0]));
+					foreach ($sql_mode as $key) {
+						if (array_key_exists($key, $need)) {
+							$error .= '<br><i>' . $key . ' => Need To Be Removed</i>';
+							$err_count++;
+						} else {
+							$error .= '<br>' . $key . ' => OK';
+						}
+					};
+				} else {
+					$error .= '<br>No Set MySQL Mode => OK';
+				}	
 				mysqli_free_result($result);
 			} else {
 				$error .= '<i>Check SQL Mode Failed</i>';

@@ -4,7 +4,7 @@
 * module: Centcount Analyticsb Free Kernel Common Function PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/12/2018 *
+* date: 03/19/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -916,6 +916,46 @@ function filter_robot_ip(&$redis, $ip) {
 				$redis->SADD('FilterRobots', $ip);
 			}
 		}	
+}
+
+function get_server_info(&$redis) {
+	$fp = popen('free -m | grep -E "^(Mem:)"',"r");
+	$rs = fread($fp, 1024);
+	pclose($fp);
+	if ($rs) {
+		$rs = preg_replace("/\s(?=\s)/", "\\1", $rs);
+		$tmp = explode(' ', $rs);
+		if (count($tmp) > 3) {
+			$redis->PIPELINE();
+			$redis->SET('TotalMemory', $tmp[1]);
+			$redis->SET('UsedMemory',  $tmp[2]);
+			$redis->SET('FreeMemory',  $tmp[3]);
+			$redis->EXEC();	
+		}
+	}
+
+	$fp = popen('df -BG | grep -E "^(/)"',"r");
+	$rs = fread($fp, 1024);
+	pclose($fp);
+	if ($rs) {
+		$rs = preg_replace("/\s(?=\s)/", "\\1", $rs);
+		$tmp = explode(' ', $rs);
+		$n = (int)(count($tmp) / 6);
+		if ($n > 0) {
+			$total = 0;
+			$used = 0;
+			for ($i=0; $i<$n; $i++) {
+				$t = $i * 6 + 1;
+				$total += (int)$tmp[$t];
+				$t = $i * 6 + 2;
+				$used += (int)$tmp[$t];
+			}
+			$redis->PIPELINE();
+			$redis->SET('TotalDisk', $total);
+			$redis->SET('UsedDisk',  $used);
+			$redis->EXEC();
+		}
+	}
 }
 
 function export_array(&$Arr) {
