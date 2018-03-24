@@ -63,7 +63,7 @@ if ($_POST) {
 		$err .= '<br/>Captcha must not be empty';
 	} else if (strlen($_POST['captcha']) < 4) {
 		$err .= '<br/>Captcha must be 4 characters long';
-	} else if ($vcode !== $_POST['captcha']  || $vcode === '') {
+	} else if ($vcode !== strtolower($_POST['captcha'])  || $vcode === '') {
 		$err .= '<br/>Wrong captcha';
 	}
 	
