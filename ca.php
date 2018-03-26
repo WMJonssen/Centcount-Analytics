@@ -4,7 +4,7 @@
 * module: Centcount Analytics Free JS Code Generate PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/13/2018 *
+* date: 03/26/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -73,9 +73,9 @@ echo '9, ';
 /*!
 * ATTENTION: THIS FREE LICENSE IS ONLY FOR PERSONAL NON-COMMERCIAL USER. FOR COMMERCIAL PURPOSES, PLEASE PURCHASE A COMMERCIAL LICENSE! *
 * module: Centcount Analytics JS Code *
-* version: 1.00.180313001 Free *
+* version: 1.00.180326001 Free *
 * author: WM Jonssen *
-* date: 03/13/2018 *
+* date: 03/26/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved. *
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -136,7 +136,7 @@ e=p(e,d,g,f,h[k+2],15,718787259);f=p(f,e,d,g,h[k+9],21,3951481745);g=u(g,v);f=u(
 '//',ib=screen,ba=navigator,ab=ba.userAgent+'',tb=ba.platform+'',O=parseInt,Sa=parseFloat,Q=encodeURIComponent,Db=decodeURIComponent,R=q._caq_rt||S,va=0,ca=0,qb=0,rb=0,pa=0,F=!1,ra=!1,D=!1;CPA=0;try{'undefined'!==typeof q.performance.timing.responseEnd&&null!==q.performance.timing.responseEnd&&(F=q.performance.timing)}catch(b){F=!1}try{'undefined'!==typeof q.performance.navigation.type&&null!==q.performance.navigation.type&&(ra=q.performance.navigation)}catch(b){ra=!1}sa=Ab+sa;bb=Ab+bb;var Qa=sa+
 '/core.php?',Wb=sa+'/ca.php?siteid='+xc;C=O(C);St=O(C/1E3);'1'===ta?ta=P('CAHM_VISA',''):A('CAHM_VISA','',0,0);if(58===ta.length){var Bb=1E3*O(ta.substr(32,10));if(S>Bb||S+9E7<Bb)A('CAHM_VISA','',0,0),console.log('CA: Visa has been expired, Please apply a new visa!');else{Ra(Wb+'&cahm_visa='+ta+'&rnd='+Math.random());D=!0;return}}var Za,na=0,sb=0,N=0,M=0,ma=0,la=0,ka=0,ja=0,T=0,ia=0,aa=[],v=[0,0,0,0,0,0,0,0,0,0,0,0],wa=[],Y=[],xa=S,Z=0,oa=0,Va=0,K='',Wa='',da='',gb=0,cb='',fb='',W=0,Xa=0,V=!1,Aa=
 !1,Ma=0,Na=0,Oa=0,Pa=0,ea=0,U=1,ya=0,pb=0,za=!1,Ya=!1}catch(b){t(b,'Init CA data failed');return}var Vb={arr:[],timer:null,obj:function(a,c){this.el=a;this.fn=c;this.tf=!1},track:function(a,c){try{if(this.arr.push(new this.obj(a,c)),!this.timer){var b=this;this.timer=setInterval(function(){b.check()},100)}}catch(p){t(p,'iframe track failed')}},del:function(a){for(var b in this.arr)a==this.arr[b].el&&this.arr.pop(this.arr[b])},destory:function(){for(var a in this.arr)this.arr.pop(this.arr[a])},check:function(){try{if(m.activeElement){var a=
-m.activeElement,c;for(c in this.arr)a===this.arr[c].el?0==this.arr[c].tf&&(this.arr[c].fn.apply(a,[]),this.arr[c].tf=!0):this.arr[c].tf=!1}}catch(n){t(n,'iframe check failed')}}};try{if(D)return;var a={};a.ct=R;a.pg='';a.pv=0;a.dt='';a.pa=0;try{Hb();try{a.sw=ib.width+0,a.sh=ib.height+0,a.cd=ib.colorDepth+0,a.tc=q.hasOwnProperty?q.hasOwnProperty('ontouchstart')?1:0:0}catch(b){a.tc=0,t(b,'gMI failed')}Ib();Jb();try{a.ce=ba.cookieEnabled?1:0,a.lan=(ba.systemLanguage||ba.language)+'',a.lan=a.lan.toLowerCase()}catch(b){t(b,
+m.activeElement,c;for(c in this.arr)a===this.arr[c].el?0==this.arr[c].tf&&(this.arr[c].fn.apply(a,[]),this.arr[c].tf=!0):this.arr[c].tf=!1}}catch(n){t(n,'iframe check failed')}}};try{if(D)return;var a={};a.ct=(new Date).getHours();a.pg='';a.pv=0;a.dt='';a.pa=0;try{Hb();try{a.sw=ib.width+0,a.sh=ib.height+0,a.cd=ib.colorDepth+0,a.tc=q.hasOwnProperty?q.hasOwnProperty('ontouchstart')?1:0:0}catch(b){a.tc=0,t(b,'gMI failed')}Ib();Jb();try{a.ce=ba.cookieEnabled?1:0,a.lan=(ba.systemLanguage||ba.language)+'',a.lan=a.lan.toLowerCase()}catch(b){t(b,
 'gNI failed')}Kb();jb();Lb();kb();Mb();lb();try{2===a.nt?(a.se='',a.sen='',a.kw='',a.rd='',a.rf='',a.fmt=2):a.fmt=a.se?4:a.rd?5:a.rf?2:3}catch(b){t(b,'gRI failed')}Eb()}catch(b){t(b,'Init CA property failed')}!1!==F&&(ca=Ba(1));J(1);a.mx=0;a.my=0;a.mbi=0}catch(b){t(b,'Build CA failed');return}try{if(D)return;Sb(Pb);q.addEventListener?(q.addEventListener('load',Ka),q.addEventListener('beforeunload',La),q.addEventListener('unload',Ca)):q.attachEvent&&(q.attachEvent('onload',Ka),q.attachEvent('onbeforeunload',
 La),q.attachEvent('onunload',Ca))}catch(b){t(b,'add events failed');return}var Tb={BR:1,SCRIPT:1,STYLE:1}})();
 

@@ -4,7 +4,7 @@
 * module: Centcount Analyticsb Free Kernel PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/20/2018 *
+* date: 03/26/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -13,7 +13,7 @@
 
 ignore_user_abort(true); 
 set_time_limit(0); 
-define('KERNEL_VERSION', '1.00.180320001');
+define('KERNEL_VERSION', '1.00.180326001');
 
 @require './config/config_common.php';
 require 'kernel.sql.php';
@@ -388,7 +388,7 @@ function execute(&$db_con, $pid, &$request, $start_time, &$IPH, &$redis_0, &$red
 				$redis_3->HMSET($CA_REDIS, $redis_array);
 			}
 			if ($LENGTH_CA === CA_TOTAL_ARRAY_LENGTH || $LENGTH_CA === CA_BASIC_ARRAY_LENGTH) break;
-			$CA['ClientTime'] = SDATA($db_con,$request,'ct',2,(int)($CA['RecordNo'] / 1000),2E12,1E12); 
+			$CA['ClientTime'] = SDATA($db_con,$request,'ct',2,(int)date('G',$TIME),23,0);
 			$CA['LastRN'] = SDATA($db_con,$request,'lr',2,0,$start_time,1E15); 
 			$CA['LastVisitTime'] = SDATA($db_con,$request,'lvt',2,($CA['LastRN'] > 0 ? $CA['LastRN'] : $CA['RecordNo']),$start_time,1E14); 
 			$CA['TotalPageViews'] = SDATA($db_con,$request,'tpv',2,1,MAX_INT,1); 
@@ -785,7 +785,7 @@ function execute(&$db_con, $pid, &$request, $start_time, &$IPH, &$redis_0, &$red
 				}
 				$STZ = date('H', $TIME);
 				$IndMD5Arr[] = array('U' . $STZ, 21, $STZ);
-				$VTZ = date('H', (int)($CA['ClientTime'] / 1E3));
+				$VTZ = $CA['ClientTime'] < 10 ? '0' . $CA['ClientTime'] : $CA['ClientTime'];
 				$IndMD5Arr[] = array('V' . $VTZ, 22, $VTZ);
 				$IndMD5Arr[] = array('a' . $CA['PDMD5'], 27, $CA['PageDomain']);
 				if ($CA['BrowserName'] !== '') {

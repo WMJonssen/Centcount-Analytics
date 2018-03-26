@@ -4,7 +4,7 @@
 * module: Centcount Analyticsb Free Kernel Common Function PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/19/2018 *
+* date: 03/26/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -231,7 +231,7 @@ function exitStatus($rn, &$redis_3, $redis_ca, $redis_ind, $redis_ses, $flag) {
 						$IndMD5Arr[] = 'T' . $RS['LanCountry'];
 					}
 					$IndMD5Arr[] = 'U' . date('H', (int)($RS['RecordNo'] / 1E6));
-					$IndMD5Arr[] = 'V' . date('H', (int)($RS['ClientTime'] / 1E3));
+					$IndMD5Arr[] = 'V' . ($RS['ClientTime'] < 10 ? '0' . $RS['ClientTime'] : $RS['ClientTime']);
 					$IndMD5Arr[] = 'a' . $RS['PDMD5'];
 					$IndMD5Arr[] = 'b' . $RS['BrowserName'] . $RS['BrowserVersionN'];
 					$IndMD5Arr[] = 'c' . $RS['OS'] . $RS['OSCodename'];
@@ -452,7 +452,7 @@ function viewStatus($rn, &$redis_2, &$redis_3, $redis_ca, $redis_ind, $redis_ses
 					$IndMD5Arr[] = 'T' . $RS['LanCountry'];
 				}
 				$IndMD5Arr[] = 'U' . date('H', (int)($RS['RecordNo'] / 1E6));
-				$IndMD5Arr[] = 'V' . date('H', (int)($RS['ClientTime'] / 1E3));
+				$IndMD5Arr[] = 'V' . ($RS['ClientTime'] < 10 ? '0' . $RS['ClientTime'] : $RS['ClientTime']);
 				$IndMD5Arr[] = 'a' . $RS['PDMD5'];
 				$IndMD5Arr[] = 'b' . $RS['BrowserName'] . $RS['BrowserVersionN'];
 				$IndMD5Arr[] = 'c' . $RS['OS'] . $RS['OSCodename'];
