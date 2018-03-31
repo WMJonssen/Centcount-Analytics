@@ -447,7 +447,7 @@ function CheckEnv() {
 
 
 		$error .= '<br>**************************************************<br>';
-		$need = array('popen'=>0, 'pclose'=>0, 'fread'=>0);
+		$need = array('popen'=>0);
 		
 		$error .= 'Check PHP Function: <br>**************************************************';
 		foreach ($need as $key => $value) {
@@ -455,9 +455,9 @@ function CheckEnv() {
 		};
 		foreach ($need as $key => $value) {
 			if ($value == 1) {
-				$error .= '<br>' . $key . ' : Enabled => OK';
+				$error .= '<br>' . $key . ' => OK';
 			} else {
-				$error .= '<br><i>' . $key . ' : Disabled => WRONG (Must Be Enabled)</i>';
+				$error .= '<br><i>' . $key . ' => Disabled (Must Be Enabled)</i>';
 				$err_count++;
 			}
 		};
