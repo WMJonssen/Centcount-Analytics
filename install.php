@@ -4,7 +4,7 @@
 * module: Centcount Analytics Free Installation PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/20/2018 *
+* date: 03/31/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -442,6 +442,25 @@ function CheckEnv() {
 			$error .= '<i>Check PHP Extension Failed</i>';
 			$err_count++;
 		}	
+		$error .= '<br>**************************************************<br><br>';
+
+
+
+		$error .= '<br>**************************************************<br>';
+		$need = array('popen'=>0, 'pclose'=>0, 'fread'=>0);
+		
+		$error .= 'Check PHP Function: <br>**************************************************';
+		foreach ($need as $key => $value) {
+			$need[$key] = function_exists($key);
+		};
+		foreach ($need as $key => $value) {
+			if ($value == 1) {
+				$error .= '<br>' . $key . ' : Enabled => OK';
+			} else {
+				$error .= '<br><i>' . $key . ' : Disabled => WRONG (Must Be Enabled)</i>';
+				$err_count++;
+			}
+		};
 		$error .= '<br>**************************************************<br><br>';
 
 
