@@ -4,7 +4,7 @@
 * module: Centcount Analyticsb Free Kernel PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/26/2018 *
+* date: 03/31/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -13,7 +13,7 @@
 
 ignore_user_abort(true); 
 set_time_limit(0); 
-define('KERNEL_VERSION', '1.00.180326001');
+define('KERNEL_VERSION', '1.00.180331001');
 
 @require './config/config_common.php';
 require 'kernel.sql.php';
@@ -634,6 +634,11 @@ function execute(&$db_con, $pid, &$request, $start_time, &$IPH, &$redis_0, &$red
 				$IndFT = 3;
 				$IndFK = 'Direct Entry';
 				$IndFKMD5 = 'C'; 
+			}
+			if ($CA['IsNVS'] !== 1) {
+				$IsDR = 0;
+				$IsRF = 0;
+				$IsSE = 0;
 			}
 			$CA['IsUPV'] = ($RBT === 0) ? $redis_3->SADD($SessionName.'B', $CA['PageMD5']) : 1;
 			$IsUPV = $CA['IsUPV'];

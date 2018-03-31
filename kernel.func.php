@@ -4,7 +4,7 @@
 * module: Centcount Analyticsb Free Kernel Common Function PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/26/2018 *
+* date: 03/31/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -344,16 +344,18 @@ function viewStatus($rn, &$redis_2, &$redis_3, $redis_ca, $redis_ind, $redis_ses
 					$IndFKMD5 = 'E' . $RS['FromKeyMD5']; 
 					break;
 				}
-				switch ($RS['EntryCode']) {
-				case 3: 
-					$IsDR = 1;
-					break;
-				case 4: 
-					$IsSE = 1;
-					break;
-				case 5: 
-					$IsRF = 1;
-					break;
+				if ($RS['IsNVS'] == 1) {
+					switch ($RS['EntryCode']) {
+					case 3: 
+						$IsDR = 1;
+						break;
+					case 4: 
+						$IsSE = 1;
+						break;
+					case 5: 
+						$IsRF = 1;
+						break;
+					}
 				}
 				$IsPV  = 1; 
 				$IsUV  = (int)$RS['IsUV'];
