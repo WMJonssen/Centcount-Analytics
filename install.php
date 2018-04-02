@@ -4,7 +4,7 @@
 * module: Centcount Analytics Free Installation PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/31/2018 *
+* date: 04/02/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -176,9 +176,9 @@ UNIQUE indexDomain (Domain)
 
 
 		//GENERATE USER ID BEGIN
-		$ActivateCode = mt_rand(1E8, 2E9);
 		$CreateTime = time();
-		$ActivateTime = $CreateTime + 604800;//one week(7*24*60*60 = 604800);
+		//$ActivateCode = mt_rand(1E8, 2E9);
+		//$ActivateTime = $CreateTime + 604800;//one week(7*24*60*60 = 604800);
 		$Today = date('ymd');
 		$UserDate = $Today;
 		$UserID = 1;
@@ -190,7 +190,7 @@ UNIQUE indexDomain (Domain)
 
 		//REGISTER USER ID BEGIN
 		$md5pw = md5($pw);
-		$sql = "INSERT INTO User(UserID, Username, Password, SiteTB, ActivateCode, ActivateTime, Authority, CreateTime) VALUES($UID, '{$user}', '{$md5pw}', {$SiteTB}, {$ActivateCode}, {$ActivateTime}, 4, {$CreateTime})";
+		$sql = "INSERT INTO User(UserID, Username, Password, SiteTB, ActivateCode, ActivateTime, Activated, Authority, CreateTime) VALUES($UID, '{$user}', '{$md5pw}', {$SiteTB}, 0, 0, 1, 4, {$CreateTime})";
 		if (mysqli_query($con, $sql)) {
 			if (!check_table($con, 'st'. $SiteTB, 'ccdata')) {
 				$sql = 'CREATE TABLE IF NOT EXISTS st'. $SiteTB .' (
@@ -217,13 +217,14 @@ UNIQUE indexDomain (Domain)
 					return $err;
 				}
 			}
-				
+			/*
 			if (autoresponse($user, $pw, $UID, $ActivateCode)) {
 				$err .= '<br/>Register super administrator account successfully!<br/>Please check the verify-mail to activate account';
 			} else {
 				$err .= '<br/>Send verify email failed! Please try again or send error information to us. Error No: 1001';
 				return $err;
 			}
+			*/
 		} else {//Error No ' . mysqli_errno($con) . ': ' . mysqli_error($con);
 			$err .= '<br/>Register super administrator account failed, Please try again or send error information to us. Error No: 1002';
 			return $err;
