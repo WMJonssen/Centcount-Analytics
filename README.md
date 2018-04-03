@@ -33,7 +33,7 @@ Check out the online demo for Centcount Analytics at <a href="https://www.centco
 
 <h2>Online Installation Instructions:</h2><br>
 
-Check out the online installation instructions at <a href="https://www.centcount.com/doc.php?doc=Centcount%20Analytics&article=Install%20Centcount%20Analytics">Installation Instructions</a><br><br><br>
+Check out the online installation instructions at <a href="https://www.centcount.com/doc.php?doc=Centcount%20Analytics&article=Install%20Centcount%20Analytics">https://www.centcount.com/doc.php</a><br><br><br>
 
 <h2>Contact:</h2><br>
 
