@@ -4,7 +4,7 @@
 * module: Centcount Analytics Free COMMON CONFIG *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/12/2018 *
+* date: 04/02/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -21,7 +21,7 @@
 //encode factor
 define('ENCODE_FACTOR', 123456789);//RESET YOUR PRIVATE ENCODE FACTOR, IT IS VERY IMPORTANT
 //mysql local root name
-define('ROOT_USER_LOCAL', 'root');//set your mysql login username here
+define('ROOT_USER_LOCAL', 'root');//set your mysql login username here (Creating Database Permission Is Necessary)
 //mysql local root password
 define('ROOT_PASSWORD_LOCAL', 'password');//set your mysql login password here
 //administrator's timezone: PRC
@@ -29,7 +29,7 @@ define('ADMIN_TIMEZONE', 'PRC');//set administrator's timezone
 //default timezone: PRC
 define('DEFAULT_TIME_ZONE', 'PRC');//set default timezone
 //error log host
-define('ERROR_LOG_HOST', 'www.yourdomainname.com');//set Error Log host (You have to upload file errlog.php to this host under server's root directory)
+define('ERROR_LOG_HOST', 'www.yourdomainname.com');//set Error Log host 
 /**************** CA CONFIG END ***************/
 
 

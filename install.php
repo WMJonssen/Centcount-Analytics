@@ -68,13 +68,12 @@ if ($_POST) {
 	}
 	
 	
-	if ($err === '') $err = IniCA($_POST['dbuser'], $_POST['dbpw'], $_POST['username'], $_POST['password']);
+	if ($err === '') $err = InstallCA($_POST['dbuser'], $_POST['dbpw'], $_POST['username'], $_POST['password']);
 	
 	if (substr($err,0,5) == '<br/>') $err = substr($err,5);
-
 }
 
-function IniCA($DB_User, $DB_PW, $user, $pw) {
+function InstallCA($DB_User, $DB_PW, $user, $pw) {
 	
 		$err = '';
 		date_default_timezone_set(DEFAULT_TIME_ZONE);
@@ -190,7 +189,7 @@ UNIQUE indexDomain (Domain)
 
 		//REGISTER USER ID BEGIN
 		$md5pw = md5($pw);
-		$sql = "INSERT INTO User(UserID, Username, Password, SiteTB, ActivateCode, ActivateTime, Activated, Authority, CreateTime) VALUES($UID, '{$user}', '{$md5pw}', {$SiteTB}, 0, 0, 1, 4, {$CreateTime})";
+		$sql = "REPLACE INTO User(UserID, Username, Password, SiteTB, ActivateCode, ActivateTime, Activated, Authority, CreateTime) VALUES($UID, '{$user}', '{$md5pw}', {$SiteTB}, 0, 0, 1, 4, {$CreateTime})";
 		if (mysqli_query($con, $sql)) {
 			if (!check_table($con, 'st'. $SiteTB, 'ccdata')) {
 				$sql = 'CREATE TABLE IF NOT EXISTS st'. $SiteTB .' (
@@ -235,7 +234,7 @@ UNIQUE indexDomain (Domain)
 		
 		mysqli_close($con);
 
-		$err =  'Congratulations!<br/>Install CA Successfully.<br/>' . $err;
+		$err =  'Congratulations!<br/>Install CA Successfully.<br/>' . $err . '<br/><br/><a href="https://' . $_SERVER['HTTP_HOST'] . '/login.php">Log In</a>';
 		return $err;
 
 }
