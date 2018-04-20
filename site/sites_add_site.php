@@ -4,7 +4,7 @@
 * module: Centcount Analytics Free Add Site PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/12/2018 *
+* date: 04/19/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -87,7 +87,31 @@ function add_site(&$success) {
 			
 		if ($err === '') {
 			
-			$SID = (int)($GLOBALS['USERID'] . '001');
+			$iSID = (int)($GLOBALS['USERID'] . '001');
+			$SID = 0;
+
+			if ($sitecount === 0) {
+				$SID = $iSID;
+			} else if ($sitecount < 999) {
+				$count = $sitecount - 1;
+				$SID = $GLOBALS['SITES'][$count]['SiteID'] + 1;
+			} else {
+				for ($row = 0; $row < $sitecount ; $row++) {
+					if ($GLOBALS['SITES'][$row]['SiteID'] != ($iSID + $row)) {
+						$SID = ($iSID + $row);
+						break;
+					}
+				}
+				if ($SID = 0) {
+					$err .= '<br/>The site count has been reached the limit.';
+					return $err;
+				}
+			}
+
+			if ($SID < $GLOBALS['USERID']) {
+				$err .= '<br/>Can not get SID';
+				return $err;
+			}
 
 			$con = use_db(DB_HOST_LOCAL, ROOT_USER_LOCAL, ROOT_PASSWORD_LOCAL, DB_NAME_USER, 'Add Site', 'add_site');
 			if (!$con) return 'Could not use database. Please contact Administrator!';

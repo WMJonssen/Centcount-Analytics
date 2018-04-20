@@ -4,7 +4,7 @@
 * module: Centcount Analytics Free Common PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/12/2018 *
+* date: 04/19/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -79,9 +79,9 @@ function get_side_menu_html() {
 				($_SESSION['admin'] > 1 ? 
 				'<li><a class="'. ($GLOBALS['MENU']=='Sites' ? 'menu_shown' : 'menu_hidden').'" onclick="menu_click(this)" name="Sites">'.$GLOBALS['language']['menuManageSites'].'</a>
 					<ul '. ($GLOBALS['MENU']=='Sites' ? 'style="display:block;"' : '').'>
-						<li><a class="submenubtn" href="'.$menu_url.'&menu=Sites&action=All Sites"  name="All Sites">'.$GLOBALS['language']['submenuSitesAllSites'].'</a></li>'.
-						(empty($GLOBALS['SITES']) === false ? '' : '<li><a class="submenubtn" href="'.$menu_url.'&menu=Sites&action=Add Site"  name="Add Site">'.$GLOBALS['language']['submenuSitesAddSite'].'</a></li>').
-						'<li><a class="submenubtn" href="'.$menu_url.'&menu=Sites&action=Site Configuration"  name="Site Configuration">'.$GLOBALS['language']['submenuSitesSiteConfiguration'].'</a></li>
+						<li><a class="submenubtn" href="'.$menu_url.'&menu=Sites&action=All Sites"  name="All Sites">'.$GLOBALS['language']['submenuSitesAllSites'].'</a></li>
+						<li><a class="submenubtn" href="'.$menu_url.'&menu=Sites&action=Add Site"  name="Add Site">'.$GLOBALS['language']['submenuSitesAddSite'].'</a></li>
+						<li><a class="submenubtn" href="'.$menu_url.'&menu=Sites&action=Site Configuration"  name="Site Configuration">'.$GLOBALS['language']['submenuSitesSiteConfiguration'].'</a></li>
 						<li><a class="submenubtn" href="'.$menu_url.'&menu=Sites&action=Get JS Code"  name="Get JS Code">'.$GLOBALS['language']['submenuSitesGetJSCode'].'</a></li>
 						<li><a class="submenubtn" href="'.$menu_url.'&menu=Sites&action=Domains"  name="Domains">'.$GLOBALS['language']['submenuSitesDomains'].'</a></li>
 						<li><a class="submenubtn" href="'.$menu_url.'&menu=Sites&action=Blocked Sites"  name="Blocked Sites">'.$GLOBALS['language']['submenuSitesBlockedSites'].'</a></li>

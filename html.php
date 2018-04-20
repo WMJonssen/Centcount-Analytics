@@ -4,7 +4,7 @@
 * module: Centcount Analytics Free HTML Template CODE *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/12/2018 *
+* date: 04/19/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -30,9 +30,7 @@ function HTML_HEADER($flag=0, $id=0, $verify_code=0) {
 	<div id="guide">
 		<ul>
 			<li><a class="guidebtn" href="login.php">'.$GLOBALS['language']['guideLogin'].'</a></li>
-			<li><a class="guidebtn" href="https://www.centcount.com/license_price.php">'.$GLOBALS['language']['guideLicensePrice'].'</a></li>
-			<li><a class="guidebtn" href="https://www.centcount.com/about.php">'.$GLOBALS['language']['guideAboutUs'].'</a></li>
-			<li><a class="guidebtn" href="https://www.centcount.com/doc.php">'.$GLOBALS['language']['guideDoc'].'</a></li>
+			<li><a class="guidebtn" href="forgot.php">'.$GLOBALS['language']['PageForgotPW'].'</a></li>
 			<li><a class="langbtn">'.$GLOBALS['language']['guideLanguage'].'</a>
   				<ul id="submenuLan">'.
 					($flag === 0 ? '
@@ -45,7 +43,6 @@ function HTML_HEADER($flag=0, $id=0, $verify_code=0) {
 					<li><a class="lastbtn" href="?id=' . $id . '&vcode=' . $verify_code . '&lan=zh-TW">繁體中文</a></li>').'
 				</ul>
 			</li>
-			<li><a class="lastbtn" href="https://www.centcount.com/contact.php">'.$GLOBALS['language']['guideContact'].'</a></li>
 		</ul>
 	</div>
 </div>';

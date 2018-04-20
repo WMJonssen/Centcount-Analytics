@@ -4,7 +4,7 @@
 * module: Centcount Analytics Free Manager PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/14/2018 *
+* date: 04/19/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -216,7 +216,6 @@ require './html.php';
 			break;
 
 		case 'Add Site':
-			if (empty($GLOBALS['SITES']) === false) die(header("Location: manager.php?id={$GLOBALS['USERID']}&siteid={$GLOBALS['SITES'][0]['SiteID']}&menu=Sites&action=Site Configuration"));
 			get_hosts();
 			include './site/sites_add_site.php';
 			if ($_POST) {
