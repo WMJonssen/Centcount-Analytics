@@ -4,7 +4,7 @@
 * module: Centcount Analytics Free Installation PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 04/02/2018 *
+* date: 04/23/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -300,6 +300,16 @@ function CheckEnv() {
 			$err_count++;
 		} else {
 			$error .= '<br>PHP: ' . $tmp[0];
+		}
+		//check php-cli version
+		$TMP_FP = popen('php -v', 'r');
+		$tmp = trim(fread($TMP_FP, 128));
+		pclose($TMP_FP);
+		if (substr($tmp, 0 ,3) != 'PHP') {
+			$error .= '<br><i>PHP CLI: Disabled (Must Be Enabled)</i>';
+			$err_count++;
+		} else {
+			$error .= '<br>PHP CLI: OK';
 		}
 		//check mysql
 		if ($con) {

@@ -4,7 +4,7 @@
 * module: Centcount Analyticsb Free Core PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/14/2018 *
+* date: 04/23/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved. *
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -45,7 +45,7 @@ $REDIS_0 = new Redis();
 if ($REDIS_0->CONNECT(REDIS_IP_0, REDIS_PORT_0) !== true) exit;
 $REDIS_0->SELECT(REDIS_DB_0);
 $RC = $_GET['rn'];
-$RC_EXIST = $REDIS_0->EXISTS($RC);
+$RC_EXIST = (bool)$REDIS_0->EXISTS($RC);
 if ($REDIS_0->RPUSH($RC, '&' . $_SERVER['QUERY_STRING'] . '&ip=' . $IP . '&ts=' . $START_TIME) > 0) {
 	$RC_EXIST === false AND $REDIS_0->RPUSH('TicketListL', $RC);
 	if ($_GET['stat'] === '1' || $_GET['stat'] === '9') {
@@ -185,7 +185,7 @@ case 5:
 case 6:
 	break;
 case 7:
-	if ($REDIS_1->EXISTS($_GET['vid']) === false) break;
+	if ((bool)$REDIS_1->EXISTS($_GET['vid']) === false) break;
 	$RET  = $REDIS_1->GET($_GET['vid']);
 	$TMP  = '&ds='	. $_GET['ds'] .
 			'&rs='	. $_GET['rs'] .

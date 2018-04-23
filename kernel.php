@@ -4,7 +4,7 @@
 * module: Centcount Analyticsb Free Kernel PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/31/2018 *
+* date: 04/23/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -178,7 +178,7 @@ while (true) {
 					}
 				}
 				if ($TICK !== '') {
-					if ($REDIS_0->EXISTS($TICK)) {
+					if ((bool)$REDIS_0->EXISTS($TICK)) {
 						$RETURN_ARRAY = $REDIS_0->LPOP($TICK);
 						if (empty($RETURN_ARRAY)) {
 							continue;
@@ -264,8 +264,8 @@ while (true) {
 				}
 			}
 			$REDIS_0->SET('TimeLine', $GLOBALS['RN_G']);
-			if ($REDIS_0->EXISTS('PersistenceMutualExclusion') === false) pclose(popen('php -f ' . __DIR__ . '/persistence.php &', 'r'));
-			if ($REDIS_0->EXISTS(KEY_REQUEST_LIST) === false) $GLOBALS['RN_G'] = $PROCESS_LAST_RESPONSE_TIME;
+			if ((bool)$REDIS_0->EXISTS('PersistenceMutualExclusion') === false) pclose(popen('php -f ' . __DIR__ . '/persistence.php &', 'r'));
+			if ((bool)$REDIS_0->EXISTS(KEY_REQUEST_LIST) === false) $GLOBALS['RN_G'] = $PROCESS_LAST_RESPONSE_TIME;
 			get_server_info($REDIS_0);
 		}
 		if ($QUIT > 2) {
@@ -340,7 +340,7 @@ function execute(&$db_con, $pid, &$request, $start_time, &$IPH, &$redis_0, &$red
 			$redis_array = init_ind_insert('00');
 			for ($i=0; $i<5; $i++) {
 				$redis_key = $redis_ind . '0' . $i;
-				if ($redis_3->EXISTS($redis_key) === false) {
+				if ((bool)$redis_3->EXISTS($redis_key) === false) {
 					$redis_array['MD5'] = '0' . $i;
 					$redis_array['Detail'] = $tmp[$i];
 					$redis_3->HMSET($redis_key, $redis_array);
@@ -1072,7 +1072,7 @@ function execute(&$db_con, $pid, &$request, $start_time, &$IPH, &$redis_0, &$red
 				if (($CA['UAS'] = SDATA($db_con,$request,'uas',2,'EXIT',4,1)) === false) return ($ErrNO - 4); 
 				$redis_key = $redis_va . $CA['RecordNo'] . '-' . $CA['UAR'];
 				$tmp = 'VA' . $CA['UAS'];
-				if ($redis_3->EXISTS($redis_key) === false) {
+				if ((bool)$redis_3->EXISTS($redis_key) === false) {
 					$redis_array = array('VID' => $CA['VID'], 'RecordNo' => $CA['RecordNo'], 'DeviceType' => $CA['DeviceType'], 'FromType' => $CA['FromType'], 'UAR' => $CA['UAR'], $tmp => $CA['VA'], 'RecordTime' => $CA['RecordTime'], 'UpdateTime' => $CA['UpdateTime']);
 				} else {
 					$redis_array = array($tmp => $CA['VA'], 'RecordTime' => $CA['RecordTime'], 'UpdateTime' => $CA['UpdateTime']);
