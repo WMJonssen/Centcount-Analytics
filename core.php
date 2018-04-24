@@ -4,7 +4,7 @@
 * module: Centcount Analyticsb Free Core PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 04/23/2018 *
+* date: 04/24/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved. *
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -205,13 +205,13 @@ case 7:
 }
 
 $CHECK_ARRAY = $REDIS_0->MGET(array('ProcessLimit', 'ProcessCheckTime', 'ProcessMax', 'ProcessMin'));
-if ($CHECK_ARRAY[0] === '0') {
+if ($CHECK_ARRAY[0] !== '1') {
 	$PROCESS_CHECK_TIME = (int)$CHECK_ARRAY[1];
 	if (($START_TIME - $PROCESS_CHECK_TIME) > 6E7) {
 		$PROCESS_MAX = (int)$CHECK_ARRAY[2];
-		if ($PROCESS_MAX < 1) $PROCESS_MAX = 4;
+		if ($PROCESS_MAX < 1 || $PROCESS_MAX > 128) $PROCESS_MAX = 4;
 		$PROCESS_MIN = (int)$CHECK_ARRAY[3];
-		if ($PROCESS_MIN < 1) $PROCESS_MIN = 2;
+		if ($PROCESS_MIN < 1 || $PROCESS_MAX > 128) $PROCESS_MIN = 2;
 		$REDIS_0->MSET(array('ProcessCheckTime' => $START_TIME, 'ProcessMax' => $PROCESS_MAX, 'ProcessMin' => $PROCESS_MIN));
 		$PROCESS_ENABLED = 0;
 		$PROCESS_ARRAY = $REDIS_0->SMEMBERS('ProcessList');

@@ -3,7 +3,7 @@
 * module: Centcount Analytics IPROCESS INFORMATION JS Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/19/2018 *
+* date: 04/24/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -345,8 +345,8 @@ function IPROCESS(uid, r, timer, host, box, Lan, Extra) {
 	
 	function DropdownList(opt,x,len,id,title) {
 		var textHtml = "<div class='selectbtn'>";
-		textHtml += "<ul><li><a id='" + id + "' class='select' onclick='selectButton(this)'>" + title + x + "</a><ul>";
-		for (var i = 0; i < len; i++) {
+		textHtml += "<ul><li><a id='" + id + "' class='select' onclick='selectButton(this, 2)'>" + title + x + "</a><ul>";
+		for (var i = 1; i < len; i++) {
 			textHtml += "<li><a onclick='" + box + ".pSet("+i+","+opt+")'>"+i+"</a></li>";
 		}
 		textHtml += "</ul></li></ul></div>";

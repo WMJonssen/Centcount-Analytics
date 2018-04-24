@@ -4,7 +4,7 @@
 * module: Centcount Analytics Free Host Status PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/12/2018 *
+* date: 04/24/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -109,9 +109,9 @@ a:hover{text-decoration:underline;}
 .selectbtn li ul{display:none; width:auto; height:auto; max-height:168px; border:#eee 1px solid; position:absolute; z-index:999; background-color:#fff; padding-right:0px; margin-top:33px; overflow-x:hidden; overflow-y:auto;}
 .selectbtn li li {display:block; width:auto; height:auto; float:none; text-align:left;}
 
-.selectbtn li ul li a{width:100%; height:28px; line-height:28px; font-size:14px;text-align:center; color:#333; display:block; padding-left:0px; cursor:pointer;}
+.selectbtn li ul li a{width:100%; height:28px; line-height:28px; font-size:14px; text-align:center; color:#333; display:block; padding-left:0px; cursor:pointer;}
 .selectbtn li ul li a:hover{text-decoration:none; background-color:#eee;}
-.selectbtn li ul li span{width:100%; height:28px; line-height:28px; font-size:14px;text-align:center; color:#333; background-color:#f6f6f6; display:block; padding-left:10px; cursor:pointer;}
+.selectbtn li ul li span{width:100%; height:28px; line-height:28px; font-size:14px; text-align:center; color:#333; display:block; padding-left:0px; cursor:pointer; margin:0px; float:none; background-color:#f6f6f6;}
 
 
 .frameerror{width:100%; height:100%; display:none; position:fixed; top:0; left:0; text-align:center; font-family:"Microsoft Yahei",Arial,Verdana; margin:auto; background:rgba(0,0,0,1); float:left; z-index:999999999;}
