@@ -4,7 +4,7 @@
 * module: Centcount Analytics Free Installation PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 04/23/2018 *
+* date: 05/03/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -431,7 +431,7 @@ function CheckEnv() {
 		
 
 		$error .= '<br>**************************************************<br>';
-		$need = array('session'=>0,'cgi-fcgi'=>0,'curl'=>0,'mbstring'=>0,'gd'=>0,'json'=>0,'mysqli'=>0,'redis'=>0);
+		$need = array('session'=>0,'curl'=>0,'mbstring'=>0,'gd'=>0,'json'=>0,'mysqli'=>0,'redis'=>0);
 		
 		$Extensions = get_loaded_extensions();
 		if (count($Extensions)) {
