@@ -4,7 +4,7 @@
 * module: Centcount Analytics Free Installation PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 05/03/2018 *
+* date: 05/19/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -78,7 +78,7 @@ function InstallCA($DB_User, $DB_PW, $user, $pw) {
 		$err = '';
 		date_default_timezone_set(DEFAULT_TIME_ZONE);
 		
-		$con = mysqli_connect('localhost', $DB_User, $DB_PW);
+		$con = mysqli_connect(DB_HOST_LOCAL, $DB_User, $DB_PW);
 		if (mysqli_connect_errno($con)) {
 			$err = '<br/>Could not connect database';
 		} else {
@@ -244,7 +244,7 @@ function CheckEnv() {
 		$error = '';
 		$err_count = 0;
 		date_default_timezone_set(DEFAULT_TIME_ZONE);
-		$con = mysqli_connect('localhost', ROOT_USER_LOCAL, ROOT_PASSWORD_LOCAL);
+		$con = mysqli_connect(DB_HOST_LOCAL, ROOT_USER_LOCAL, ROOT_PASSWORD_LOCAL);
 
 		//check Configurstion
 		$error .= '<br>**************************************************<br>';
