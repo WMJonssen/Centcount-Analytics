@@ -4,7 +4,7 @@
 * module: Centcount Analyticsb Free Contorl Host Command PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/19/2018 *
+* date: 05/23/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -210,7 +210,7 @@ header('Content-type: text/html; charset=utf-8');
 		case 91:
 			$REDIS = new Redis();
 			$REDIS->CONNECT(REDIS_IP_2, REDIS_PORT_2) !== true AND exit;
-			$REDIS->SELECT(2);
+			$REDIS->SELECT(REDIS_DB_2);
 			$RETURN_ARRAY = $REDIS->KEYS('1*');
 			$REDIS->DEL($RETURN_ARRAY);
 			echo 'Clean settings cache successfully!';

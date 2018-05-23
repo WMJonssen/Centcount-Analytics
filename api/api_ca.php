@@ -4,7 +4,7 @@
 * module: Centcount Analyticsb Free Access Data API PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 03/12/2018 *
+* date: 05/23/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -137,9 +137,9 @@ header('Content-type: text/html; charset=utf-8');
 			}
 			mysqli_free_result($result);
 			$REDIS = new Redis();
-			$REDIS->CONNECT('127.0.0.1', 6379);
+			$REDIS->CONNECT(REDIS_IP_2, REDIS_PORT_2);
 			if ($REDIS->PING() !== '+PONG') exit;
-			$REDIS->SELECT(2);
+			$REDIS->SELECT(REDIS_DB_2);
 			$ipdb = $REDIS->GET($sid.'-IPDatabase');
 			if (is_null($ipdb)) $ipdb = 0;
 			$arr_data[0][2] = (int)$ipdb;
@@ -152,9 +152,9 @@ header('Content-type: text/html; charset=utf-8');
 	case 'realtime map':
 		$RANG_MINUTE = floor((time() - 60) / 60) * 60;
 		$REDIS = new Redis();
-		$REDIS->CONNECT('127.0.0.1', 6379);
+		$REDIS->CONNECT(REDIS_IP_1, REDIS_PORT_1);
 		if ($REDIS->PING() !== '+PONG') exit;
-		$REDIS->SELECT(1);
+		$REDIS->SELECT(REDIS_DB_1);
 		$REDIS->ZREMRANGEBYSCORE('SVIDS'.$_GET['sid'], 0, $RANG_MINUTE);
 		$total = $REDIS->ZCARD('SVIDS'.$_GET['sid']);
 		if (($start + $end) > $total) $end = $total - $start;
@@ -260,9 +260,9 @@ header('Content-type: text/html; charset=utf-8');
 			$arr_data[$RM] = array($RM, 0, 0, 0);
 		}
 		$REDIS = new Redis();
-		$REDIS->CONNECT('127.0.0.1', 6379);
+		$REDIS->CONNECT(REDIS_IP_1, REDIS_PORT_1);
 		if ($REDIS->PING() !== '+PONG') exit;
-		$REDIS->SELECT(1);
+		$REDIS->SELECT(REDIS_DB_1);
 		$REDIS->ZREMRANGEBYSCORE('SMINS'.$_GET['sid'], 0, ($RANG_MINUTE - 60));
 		$CHECK_ARRAY = $REDIS->ZRANGE('SMINS'.$_GET['sid'], 0, -1, false);
 		$LEN = count($CHECK_ARRAY);
@@ -293,9 +293,9 @@ header('Content-type: text/html; charset=utf-8');
 	case 'online no':
 		$RANG_MINUTE = floor((time() - 60) / 60) * 60;
 		$REDIS = new Redis();
-		$REDIS->CONNECT('127.0.0.1', 6379);
+		$REDIS->CONNECT(REDIS_IP_1, REDIS_PORT_1);
 		if ($REDIS->PING() !== '+PONG') exit;
-		$REDIS->SELECT(1);
+		$REDIS->SELECT(REDIS_DB_1);
 		$REDIS->ZREMRANGEBYSCORE('SVIDS'.$_GET['sid'], 0, $RANG_MINUTE);
 		$total = $REDIS->ZCARD('SVIDS'.$_GET['sid']);
 		if (($start + $end) > $total) $end = $total - $start;

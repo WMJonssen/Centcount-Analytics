@@ -4,7 +4,7 @@
 * module: Centcount Analyticsb Free Manage Site API PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 05/03/2018 *
+* date: 05/23/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -278,7 +278,7 @@ function set_domains($sid) {
 		}
 		$REDIS = new Redis();
 		$REDIS->CONNECT(REDIS_IP_2, REDIS_PORT_2) !== true AND exit;
-		$REDIS->SELECT(2);
+		$REDIS->SELECT(REDIS_DB_2);
 		$con = mysqli_connect(DB_HOST_LOCAL, ROOT_USER_LOCAL, ROOT_PASSWORD_LOCAL);
 		if (mysqli_connect_errno($con)) {
 			$err .= '<br/>Could not connect mysql host. Please contact Administrator! - Manage API Function[set_domains]';
@@ -424,7 +424,7 @@ UpdateTime int NOT NULL DEFAULT 0
 			}
 			$REDIS = new Redis();
 			$REDIS->CONNECT(REDIS_IP_2, REDIS_PORT_2) !== true AND exit;
-			$REDIS->SELECT(2);
+			$REDIS->SELECT(REDIS_DB_2);
 			if ($REDIS->ZCARD($sid . 'BlockedTime') > 0) {
 				$ARR_RETURN = $REDIS->ZRANGE($sid . 'BlockedTime', 0, -1, 'WITHSCORES');
 				if (!empty($ARR_RETURN)) {
@@ -678,7 +678,7 @@ function delete_site($db_site, $sid) {
 		mysqli_close($con);	
 		$REDIS = new Redis();
 		$REDIS->CONNECT(REDIS_IP_2, REDIS_PORT_2) !== true AND exit;
-		$REDIS->SELECT(2);
+		$REDIS->SELECT(REDIS_DB_2);
 		$RETURN_ARRAY = $REDIS->KEYS($sid.'*');
 		$REDIS->DEL($RETURN_ARRAY);
 		$err = 'OK';

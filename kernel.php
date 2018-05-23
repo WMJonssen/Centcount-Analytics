@@ -4,7 +4,7 @@
 * module: Centcount Analyticsb Free Kernel PHP Code *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 04/23/2018 *
+* date: 05/23/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -13,7 +13,7 @@
 
 ignore_user_abort(true); 
 set_time_limit(0); 
-define('KERNEL_VERSION', '1.00.180331001');
+define('KERNEL_VERSION', '1.00.180523001');
 
 @require './config/config_common.php';
 require 'kernel.sql.php';
@@ -21,15 +21,20 @@ require 'kernel.func.php';
 require 'ipdb.class.php';
 require 'vendor/autoload.php';
 
+$REDIS_0 = new Redis();
+if ($REDIS_0->CONNECT(REDIS_IP_0, REDIS_PORT_0) !== true) exit;
+$REDIS_0->SELECT(REDIS_DB_0);
+//debug 0 
+$REDIS_0->SET('DEBUG', 0);
+
 date_default_timezone_set(ADMIN_TIMEZONE);
 
 $IPH[0] = new \IP2Location\Database('./ipdb/IP2LOCATION-LITE-DB11.BIN', \IP2Location\Database::FILE_IO);
 define('IP_ALL', \IP2Location\Database::ALL);
 $IPH[1] = new \GeoIp2\Database\Reader('./ipdb/GeoLite2-City.mmdb');
+//debug 1
+$REDIS_0->SET('DEBUG', 1);
 
-$REDIS_0 = new Redis();
-if ($REDIS_0->CONNECT(REDIS_IP_0, REDIS_PORT_0) !== true) exit;
-$REDIS_0->SELECT(REDIS_DB_0);
 $REDIS_2 = new Redis();
 if ($REDIS_2->CONNECT(REDIS_IP_2, REDIS_PORT_2) !== true) exit;
 $REDIS_2->SELECT(REDIS_DB_2);
@@ -65,6 +70,8 @@ $REQUEST = $REDIS_0->SCARD(KEY_PROCESS_LIST);
 if ($REQUEST >= $PROCESS_MAX) exit;
 $DB = con_db(DB_HOST_LOCAL, ROOT_USER_LOCAL, ROOT_PASSWORD_LOCAL);
 if ($DB === false) exit;
+//debug 2
+$REDIS_0->SET('DEBUG', 2);
 $PID = 'PID' . mt_rand(1E6,9E6);
 $PROCESS_STATUS = 1; 
 $PROCESS_START_TIME = (int)(microtime(true) * 1E6);
@@ -95,6 +102,8 @@ $GLOBALS['ERROR_G'] = '';
 $ATTACK_BAN_TIMES = 5;
 $ATTACK_BAN_SECONDS = 15;
 $IP = '';
+//debug 3
+$REDIS_0->SET('DEBUG', 3);
 autoresponse(NOTIFICATION_MAIL, ADMIN_MAIL, 'NOTIFICATION OF CA KERNEL', 'CA KERNEL WAS RESTARTED');
 if ($REDIS_0->SCARD('TicketRegS') > 0) {
 	$RETURN_ARRAY = $REDIS_0->SET('CheckTicketMutualExclusion', '', array('NX'));
@@ -108,7 +117,11 @@ if ($REDIS_0->SCARD('TicketRegS') > 0) {
 	}
 	$REDIS_0->DEL('CheckTicketMutualExclusion');
 }
+//debug 4
+$REDIS_0->SET('DEBUG', 4);
 get_server_info($REDIS_0);
+//debug 5
+$REDIS_0->SET('DEBUG', 5);
 while (true) {
 		$PROCESS_LAST_RESPONSE_TIME = (int)(microtime(true) * 1E6);
 		$PROCESS_STATUS = $REDIS_0->HGET($PID, 'Status');
@@ -234,7 +247,7 @@ while (true) {
 			$TIMER_MIN_CRON_JOB = $PROCESS_LAST_RESPONSE_TIME; 
 			if ($REDIS_0->PING() !== '+PONG') { 
 				$REDIS_0 = new Redis();
-				if ($REDIS_0->CONNECT('127.0.0.1', 6379) !== true) {
+				if ($REDIS_0->CONNECT(REDIS_IP_0, REDIS_PORT_0) !== true) {
 					autoresponse(FATALERROR_MAIL, ADMIN_MAIL, 'CA KERNEL FATAL ERROR', 'ERROR NO: 8002, PID: ' . $PID);
 					mysqli_close($DB);
 					pclose(popen('php -f ' . __DIR__ . '/kernel.php &', 'r'));
