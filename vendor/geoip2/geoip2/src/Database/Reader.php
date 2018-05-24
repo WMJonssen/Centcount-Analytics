@@ -7,6 +7,8 @@ use GeoIp2\ProviderInterface;
 use MaxMind\Db\Reader as DbReader;
 use MaxMind\Db\Reader\InvalidDatabaseException;
 
+/* Modify by WM Jonssen on 05/24/2018 */
+
 /**
  * Instances of this class provide a reader for the GeoIP2 database format.
  * IP addresses can be looked up using the database specific methods.
@@ -46,10 +48,8 @@ class Reader implements ProviderInterface
      * @throws \MaxMind\Db\Reader\InvalidDatabaseException if the database
      *          is corrupt or invalid
      */
-    public function __construct(
-        $filename,
-        $locales = array('en')
-    ) {
+    public function __construct($filename, $locales = array('en')) 
+    {
         $this->dbReader = new DbReader($filename);
         $this->locales = $locales;
     }
@@ -102,11 +102,7 @@ class Reader implements ProviderInterface
      */
     public function anonymousIp($ipAddress)
     {
-        return $this->flatModelFor(
-            'AnonymousIp',
-            'GeoIP2-Anonymous-IP',
-            $ipAddress
-        );
+        return $this->flatModelFor('AnonymousIp', 'GeoIP2-Anonymous-IP', $ipAddress);
     }
 
     /**
@@ -123,11 +119,7 @@ class Reader implements ProviderInterface
      */
     public function connectionType($ipAddress)
     {
-        return $this->flatModelFor(
-            'ConnectionType',
-            'GeoIP2-Connection-Type',
-            $ipAddress
-        );
+        return $this->flatModelFor('ConnectionType', 'GeoIP2-Connection-Type', $ipAddress);
     }
 
     /**
@@ -144,11 +136,7 @@ class Reader implements ProviderInterface
      */
     public function domain($ipAddress)
     {
-        return $this->flatModelFor(
-            'Domain',
-            'GeoIP2-Domain',
-            $ipAddress
-        );
+        return $this->flatModelFor('Domain', 'GeoIP2-Domain', $ipAddress);
     }
 
     /**
@@ -182,20 +170,21 @@ class Reader implements ProviderInterface
      */
     public function isp($ipAddress)
     {
-        return $this->flatModelFor(
-            'Isp',
-            'GeoIP2-ISP',
-            $ipAddress
-        );
+        return $this->flatModelFor('Isp', 'GeoIP2-ISP', $ipAddress);
     }
+
+
+
+
 
     private function modelFor($class, $type, $ipAddress)
     {
         $record = $this->getRecord($class, $type, $ipAddress);
 
+        if ($record === null) return '';
+
         $record['traits']['ip_address'] = $ipAddress;
         $class = "GeoIp2\\Model\\" . $class;
-
         return new $class($record, $this->locales);
     }
 
@@ -203,9 +192,10 @@ class Reader implements ProviderInterface
     {
         $record = $this->getRecord($class, $type, $ipAddress);
 
+        if ($record === null) return '';
+        
         $record['ip_address'] = $ipAddress;
         $class = "GeoIp2\\Model\\" . $class;
-
         return new $class($record);
     }
 
@@ -217,11 +207,11 @@ class Reader implements ProviderInterface
             //    "The $method method cannot be used to open a "
             //    . $this->metadata()->databaseType . " database"
             //);
-			return '';
+			return null;
         }
         $record = $this->dbReader->get($ipAddress);
         if ($record === null) {
-			return '';
+			return null;
             //throw new AddressNotFoundException(
             //    "The address $ipAddress is not in the database."
             //);
@@ -238,7 +228,7 @@ class Reader implements ProviderInterface
             //    "Expected an array when looking up $ipAddress but received: "
             //    . gettype($record)
             //);
-			return '';
+			return null;
         }
         return $record;
     }
