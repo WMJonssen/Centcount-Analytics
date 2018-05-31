@@ -4,7 +4,7 @@
 * module: Centcount Analytics Free COMMON CONFIG *
 * version: 1.00 Free *
 * author: WM Jonssen *
-* date: 05/19/2018 *
+* date: 05/31/2018 *
 * copyright 2015-2018 WM Jonssen <wm.jonssen@gmail.com> - All rights reserved.*
 * license: Dual licensed under the Free License and Commercial License. *
 * https://www.centcount.com *
@@ -21,7 +21,7 @@
 //encode factor
 define('ENCODE_FACTOR', 'abcdef123456');//RESET YOUR PRIVATE ENCODE FACTOR, IT IS VERY IMPORTANT
 //mysql local host name
-define('DB_HOST_LOCAL', 'localhost');//set your mysql host name or ip
+define('DB_HOST_LOCAL', '127.0.0.1');//set your mysql host name or ip
 //mysql local root name
 define('ROOT_USER_LOCAL', 'root');//set your mysql login username here (Creating Database Permission Is Necessary)
 //mysql local root password
