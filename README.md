@@ -81,7 +81,7 @@ You may use the Software for commercial means after purchase of the commercial l
 You can download application(s) for your website from Centcount Analytics official website after you have paid appropriate fee to the author/owner of the application(s).
 
 <b>2. License Restrictions</b><br>
-You cannot use the Software for commercial or profit purposes (include but are not limited to company websites, operating websites or other for-profit websites) unless you have been licensed to. To purchase the license, please visit https://www.centcount.com/license_price.php or email to wm.jonssen@gmail.com for more information.
+You cannot use the Software for commercial or profit purposes (include but are not limited to company websites, operating websites or other for-profit websites) unless you have been licensed to. To purchase the license, please visit https://www.centcount.com/pricing.php or email to wm.jonssen@gmail.com for more information.
 
 You may not rent, sublicense, assign, lease, loan, resell, distribute, publish or network the Software or related materials or create derivative works based upon the Software or any part thereof.
 
@@ -110,4 +110,4 @@ The Agreement is governed by and construed in accordance with the laws of P.R Ch
 
 
 Author/Owner: WM Jonssen<br>
-02-14-2018
+04-19-2019
