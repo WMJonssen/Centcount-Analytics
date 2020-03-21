@@ -19,7 +19,7 @@ function settings_about_ca_html() {
 	$GLOBALS['TEXT_BODY'] = '
 <div class="dTitle mTop15">'. $GLOBALS['indicator']['About CA'] .'</div>
 <p>
-	<b>'. $GLOBALS['language']['CA'] .' Pro Edition</b><br>
+	<b>'. $GLOBALS['language']['CA'] .' Free Edition</b><br>
 	Code Name: Centurion<br>
 	Version: '.CA_VERSION.'<br>
 	Update: ' .CA_UPDATE. '<br>
