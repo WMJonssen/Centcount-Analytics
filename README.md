@@ -19,7 +19,7 @@
 
 <h2>Development History:</h2><br>
 
-In past 3 years, I rewrote Centcount Analytics 3 times for high performance. Finally, Centcount Analytics 1.00 is coming now! Light, Stable, Powerful, High Performance... <br>
+In past 5 years, I rewrote Centcount Analytics 3 times for high performance. Finally, Centcount Analytics 1.00 is coming now! Light, Stable, Powerful, High Performance... <br>
 
 <b>1st Edition:</b>  No queue, no cache, develped by PHP + MySQL, single-process, Computing was mixed with data storage.  Can not handle high-concurrence request.  Lower performance.<br>
 
@@ -108,4 +108,4 @@ The Agreement is governed by and construed in accordance with the laws of P.R Ch
 
 
 Author/Owner: WM Jonssen<br>
-04-19-2019
+05-09-2020
