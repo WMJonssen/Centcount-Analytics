@@ -45,7 +45,7 @@ Email: <a href="mailto:wm.jonssen@gmail.com">wm.jonssen@gmail.com</a><br>
 
 Twitter: <a href="https://twitter.com/WM_Jonssen">@WM_Jonssen</a><br>
 
-QQ Group：<a href="https://jq.qq.com/?_wv=1027&k=5i0fPxN">551802546</a><br><br><br>
+QQ Group: <a href="https://jq.qq.com/?_wv=1027&k=5i0fPxN">551802546</a><br><br><br>
 
 <h2>License:</h2><br>
     Centcount Analytics is dual-licensed under the Free License and Commercial License.
