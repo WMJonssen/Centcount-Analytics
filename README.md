@@ -54,7 +54,7 @@ Twitter: <a href="https://twitter.com/WM_Jonssen">@WM_Jonssen</a><br><br><br>
 <h2>END USER LICENSE AGREEMENT</h2><br>
 <b>Please read this agreement carefully before installing and using our software.</b>
 
-Copyright © 2015-2018, WM Jonssen.
+Copyright © 2015-2020, WM Jonssen.
 All Rights Reserved.
 
 This software license agreement (hereinafter the “Agreement”) is a legal agreement between the user (hereinafter “You” or the “User”) and Author/Owner of Centcount Analytics (hereinafter “Author”) for the software products (hereinafter the “Software”) and related services (hereinafter the “Service”) that accompanies this Agreement, as may be updated or replaced by feature enhancements, software updates or maintenance releases and any services that may be provided by Author under this Agreement. You are not allowed to download, install or use the Software or to use Services unless you accept all the terms and conditions of this Agreement. Your download, installation and use of the Software shall be regarded as your acceptance of the Agreement and your agreement to be bound by all the terms and conditions of this Agreement.
