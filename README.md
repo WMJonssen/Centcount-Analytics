@@ -1,4 +1,4 @@
-# Centcount Analytics (centcount.com)
+# Centcount Analytics 1.0
 ## An open-source web analytics software
 <br>
 <h2>What is Centcount Analytics:</h2><br>
@@ -42,8 +42,6 @@ Website: <a href="https://www.centcount.com">centcount.com</a><br>
 About us: <a href="https://www.centcount.com/about.php">https://www.centcount.com/about.php</a><br>
 
 Email: <a href="mailto:wm.jonssen@gmail.com">wm.jonssen@gmail.com</a><br>
-
-Facebook: <a href="https://www.facebook.com/people/WenMing-Yang/100017971758654">Follow me on Facebook</a><br>
 
 Twitter: <a href="https://twitter.com/WM_Jonssen">@WM_Jonssen</a><br><br><br>
 
