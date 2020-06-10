@@ -1,5 +1,6 @@
 # Centcount Analytics 1.0
 ## An open-source web analytics software
+## Centcount Analytics 2.0 Pro is available now! <a href="https://www.centcount.com">Read More</a>
 <br>
 <h2>What is Centcount Analytics:</h2><br>
     Centcount Analytics is an open-source web analytics software. Developed by PHP + MySQL + Redis, Can be easily deployed on your own server, 100% data ownership. Data accuracy is the biggest feature of CA system. Centcount Analytics collects & analyzes visitor's data as many as possible, so as to provide a very accurate statistical data for the site administrator, and to dig potential value.
